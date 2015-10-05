@@ -34,9 +34,9 @@ def Check():
   
   #Servers
   progress.Actualizar(25, "Descargando lista de Servidores...")
-  RemoteJSONData = json.loads(scrapertools.cache_page(GitApi + "servers", headers=headers))
+  RemoteJSONData = json.loads(scrapertools.downloadpage(GitApi + "servers", headers=headers))
   LocalJSONData = json.loads(open(ServersIndexPath,"r").read())
-  open(ServersIndexPath.replace(".json","-remote.json"),"w").write(json.dumps(RemoteJSONData, indent=4, sort_keys=True))
+  #open(ServersIndexPath.replace(".json","-remote.json"),"w").write(json.dumps(RemoteJSONData, indent=4, sort_keys=True))
   if RemoteJSONData <> LocalJSONData:
     for Server in RemoteJSONData:
       if not Server in LocalJSONData:
@@ -44,9 +44,9 @@ def Check():
         
   #Channels
   progress.Actualizar(50, "Descargando lista de Canales...")
-  RemoteJSONData = json.loads(scrapertools.cache_page(GitApi + "channels", headers=headers))
+  RemoteJSONData = json.loads(scrapertools.downloadpage(GitApi + "channels", headers=headers))
   LocalJSONData = json.loads(open(ChannelsIndexPath,"r").read())
-  open(ChannelsIndexPath.replace(".json","-remote.json"),"w").write(json.dumps(RemoteJSONData, indent=4, sort_keys=True))
+  #open(ChannelsIndexPath.replace(".json","-remote.json"),"w").write(json.dumps(RemoteJSONData, indent=4, sort_keys=True))
   progress.Actualizar(75, "Comprobando...")
   if RemoteJSONData <> LocalJSONData:
     for Channel in RemoteJSONData:
