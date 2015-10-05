@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+    <defaultcontrol>10042</defaultcontrol>
+    <allowoverlays>false</allowoverlays>  
+    <controls>
+      <control type="group" id="100">
+        <centerleft>640</centerleft>
+        <centertop>360</centertop>
+        <width>350</width>
+        <height>297</height>
+        <visible allowhiddenfocus="true">Control.IsEnabled(10042)</visible>
+        
+        <defaultcontrol>102</defaultcontrol>
+        <control type="image" id="1001">
+            <texture>main-header.jpg</texture>
+        </control>
+        <control type="button" id="1002">
+              <right>5</right>
+              <top>5</top>
+              <width>20</width>
+              <height>20</height>
+              <texturefocus>closefocus.png</texturefocus>
+              <texturenofocus>close.png</texturenofocus>
+              <aspectratio align="left" aligny="top">scale</aspectratio>  
+                
+        </control>
+        <control type="label" id="1003">
+            <height>30</height>
+            <right>30</right>
+            <left>5</left>
+            <font>font10</font>
+            <textcolor>FFFFFFFF</textcolor>
+            <align>center</align>
+            <aligny>center</aligny>
+            <label></label>
+        </control>
+        <control type="group" id="1004">
+          <top>30</top>
+          <right>3</right>
+          <left>3</left>
+          <bottom>3</bottom>
+          <defaultcontrol>131</defaultcontrol>
+          
+          <control type="image" id="10041">
+            <texture>main-background.jpg</texture>
+          </control>
+          <control type="list" id="10042">
+            <left>6</left>
+            <right>18</right>
+            <top>6</top>
+            <bottom>0</bottom>
+            <focusposition>1</focusposition>
+            <orientation>vertical</orientation>
+            <focusposition>1</focusposition>
+            <pagecontrol>10053</pagecontrol>
+            <enable>false</enable>      
+            <itemlayout height="43">
+              <control type="image">
+                <height>37</height>
+                <width>320</width>
+                <texture>menu-nofocus.png</texture>
+                <bordersize>2</bordersize>
+                <bordertexture>main-header.jpg</bordertexture>
+              </control>
+              <control type="image">
+                <width>37</width>
+                <height>37</height>
+                <info>ListItem.Icon</info>
+                <aspectratio align="left" aligny="top">scale</aspectratio>
+              </control>
+              <control type="label">
+                <left>47</left>
+                <height>37</height>
+                <width>320</width>
+                <font>font10</font>
+                <textcolor>FFFFFFFF</textcolor>
+                <align>left</align>
+                <aligny>center</aligny>
+                <info>ListItem.Label</info>
+              </control>
+            </itemlayout>
+            <focusedlayout height="43">
+              <control type="image">
+                <height>37</height>
+                <width>320</width>
+                <texture>main-header.jpg</texture>
+                <bordersize>2</bordersize>
+                <bordertexture>white.png</bordertexture>
+              </control>
+              <control type="image">
+                <width>37</width>
+                <height>37</height>
+                <info>ListItem.Icon</info>
+                <aspectratio align="left" aligny="top">scale</aspectratio>
+              </control>  
+              <control type="label">
+                <left>47</left>
+                <height>37</height>
+                <width>320</width>
+                <font>font10</font>
+                <textcolor>FFFFFFFF</textcolor>
+                <align>left</align>
+                <aligny>center</aligny>
+                <info>ListItem.Label</info>
+              </control>
+            </focusedlayout>
+          </control>
+          <control type="image" id="10043">
+            <left>332</left>
+            <top>6</top>
+            <bottom>6</bottom>
+            <width>6</width>
+            <texture>scrollbar-nib.png</texture>
+          </control> 
+          <control type="image" id="10044">
+            <left>6</left>
+            <right>6</right>
+            <height>6</height>
+            <top>258</top>
+            <texture>main-background.jpg</texture>
+          </control>  
+
+        </control>
+        <control type="group" id="1005">
+          <top>30</top>
+          <right>3</right>
+          <left>3</left>
+          <bottom>3</bottom>
+          <control type="scrollbar" id="10053">
+            <right>6</right>
+            <top>6</top>
+            <bottom>6</bottom>
+            <width>6</width>
+            <texturesliderbackground>menu-nofocus.png</texturesliderbackground>
+            <texturesliderbar>scrollbar-nib.png</texturesliderbar>
+            <texturesliderbarfocus>white.png</texturesliderbarfocus>
+            <onup>1</onup>
+            <ondown>1</ondown>
+          </control>  
+        </control>
+      </control>
+    </controls>
+</window>

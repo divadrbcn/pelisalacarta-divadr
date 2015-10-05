@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <category label="General">
+    <setting default="8080" id="server.port" label="Puerto HTTP" type="text"/>
+    <setting default="8081" id="websocket.port" label="Puerto WebSocket" type="text"/>
+    <setting type="sep"/>
+    <setting default="true" id="updatecheck2" label="Comprobar actualizaciones" type="bool"/>
+    <setting default="true" id="updatechannels" label="Actualizar servidores Automaticamente" type="bool"/>
+    <setting default="true" id="debug" label="Depuracion" type="bool"/>
+    <setting default="0" id="debuglevel" label="Nivel de Log" lvalues="Error|Debug|Todo" type="enum" values="0|1|2"/>
+    <setting default="false" id="updatelibrary" label="Actualizar Biblioteca al iniciar" type="bool"/>
+    <setting default="0" id="default_action" label="Accion por defecto" lvalues="Preguntar|Ver|Ver en calidad alta|Enviar a Jdownloader" type="enum" values="0|1|2|3"/>
+    <setting default="0" id="cache.mode" label="Modo Cache" lvalues="Automatico|Cachear todo|No chachear nada" type="enum" values="0|1|2"/>
+    <setting default="0" id="languagefilter" label="Filtro de Idioma" lvalues="Cualquier idioma|Español|Ingles|Italiano|Portuges|Catalan|Euskera|Gallego|Valenciano" type="enum" values="0|1|2|3|4|5|6|7|8"/>
+    <setting type="sep"/>
+    <setting default="false" id="pyload_enabled" label="Activar pyLoad" type="bool"/>
+    <setting default="http://localhost:8000" id="pyload" label="Servidor pyLoad" type="text"/>
+    <setting default="" id="pyload_user" label="Usuario pyLoad" type="text"/>
+    <setting default="" id="pyload_password" label="Contraseña pyLoad" option="hidden" type="text"/>
+    <setting type="sep"/>
+    <setting default="false" id="jdownloader_enabled" label="Activar jDownloader" type="bool"/>
+    <setting default="http://localhost:8765" id="jdownloader" label="Servidor jDownloader" type="text"/>
+    <setting default="JD" id="jdownloader_user" label="Usuario jDownloader" type="text"/>
+    <setting default="JD" id="jdownloader_password" label="Contraseña jDownloader" option="hidden" type="text"/>
+    <setting type="sep"/>
+    <setting default="false" id="usepassword" label="Proteger configuración con contraseña" type="bool"/>
+    <setting default="" id="password" label="Contraseña" option="hidden" type="text"/>
+  </category>
+  <category label="Rutas">
+    <setting default="" id="downloadpath" label="Directorio de Descargas" type="text"/>
+    <setting default="" id="downloadlistpath" label="Directorio de Lista de Descargas" type="text"/>
+    <setting default="" id="bookmarkpath" label="Directorio de Favoritos" type="text"/>
+    <setting default="" id="library_path" label="Directorio de Biblioteca" type="text"/>
+    <setting default="" id="cache.dir" label="Directorio de Cache" type="text"/>
+    <setting default="" id="cookies.dir" label="Directorio de Cookies" type="text"/>
+  </category>
+  <category label="Cuentas">
+    <setting default="false" id="fileniumpremium" label="Usar Filenium" type="bool"/>
+    <setting default="" id="fileniumuser" label="Filenium user" type="text"/>
+    <setting default="" id="fileniumpassword" label="Filenium password" option="hidden" type="text"/>
+    <setting type="sep"/>
+    <setting default="false" id="realdebridpremium" label="Usar Real Debrid" type="bool"/>
+    <setting default="" id="realdebriduser" label="Real Debrid user" type="text"/>
+    <setting default="" id="realdebridpassword" label="Real Debrid password" option="hidden" type="text"/>
+    <setting type="sep"/>
+    <setting default="false" id="alldebridpremium" label="Usar Alldebrid" type="bool"/>
+    <setting default="" id="alldebriduser" label="Alldebrid user" type="text"/>
+    <setting default="" id="alldebridpassword" label="Alldebrid password" option="hidden" type="text"/>
+    <setting type="sep"/>
+    <setting default="false" id="hdfullaccount" label="Cuenta hdfull" type="bool"/>
+    <setting default="" id="hdfulluser" label="hdfull user" type="text"/>
+    <setting default="" id="hdfullpassword" label="hdfull password" option="hidden" type="text"/>
+    <setting type="sep"/>
+    <setting default="false" id="megaforoaccount" label="Cuenta MegaForo" type="bool"/>
+    <setting default="" id="megaforouser" label="MegaForo user" type="text"/>
+    <setting default="" id="megaforopassword" label="MegaForo password" option="hidden" type="text"/>
+    <setting type="sep"/>    
+    <setting default="false" id="megahdaccount" label="Cuenta MegaHD" type="bool"/>
+    <setting default="" id="megahduser" label="MegaHD user" type="text"/>
+    <setting default="" id="megahdpassword" label="MegaHD password" option="hidden" type="text"/>
+    <setting type="sep"/>
+    <setting default="false" id="megaspainaccount" label="Cuenta Megaspain" type="bool"/>
+    <setting default="" id="megaspainuser" label="Megaspain user" type="text"/>
+    <setting default="" id="megaspainpassword" label="Megaspain password" option="hidden" type="text"/>
+    <setting type="sep"/>
+    <setting default="false" id="mocosoftxaccount" label="Cuenta MocosoftX" type="bool"/>
+    <setting default="" id="mocosoftxuser" label="MocosoftX user" type="text"/>
+    <setting default="" id="mocosoftxpassword" label="MocosoftX password" option="hidden" type="text"/>
+    <setting type="sep"/>
+    <setting default="false" id="newpct1account" label="Cuenta Newpct1" type="bool"/>
+    <setting default="" id="newpct1user" label="Newpct1 user" type="text"/>
+    <setting default="" id="newpct1password" label="Newpct1 password" option="hidden" type="text"/>
+    <setting type="sep"/>
+    <setting default="false" id="playmaxaccount" label="Cuenta Playmax" type="bool"/>
+    <setting default="" id="playmaxuser" label="Playmax user" type="text"/>
+    <setting default="" id="playmaxpassword" label="Playmax password" option="hidden" type="text"/>
+    <setting type="sep"/>
+    <setting default="false" id="pordedeaccount" label="Cuenta Pordede" type="bool"/>
+    <setting default="" id="pordedeuser" label="Pordede user" type="text"/>
+    <setting default="" id="pordedepassword" label="Pordede password" option="hidden" type="text"/>
+    <setting default="0" id="pordedesortlinks" label="Ordenar enlaces" lvalues="No|por Valoración|por Idioma|por Calidad|por Idioma y Calidad|por Idioma y Valoración|por Idioma, Calidad y Valoración" type="enum" values="0|1|2|3|4|5|6"/>
+    <setting default="0" id="pordedeshowlinks" label="Mostrar enlaces" lvalues="Todos|Ver online|Descargar" type="enum" values="0|1|2"/>
+    <setting default="0" id="pordedenumberlinks" label="Limitar número de enlaces" lvalues="No|5|10|15|20|25|30" type="enum" values="0|1|2|3|4|5|6"/>
+    <setting type="sep"/>    
+    <setting default="false" id="quebajamosaccount" label="Cuenta Quebajamos" type="bool"/>
+    <setting default="" id="quebajamosuser" label="Quebajamos user" type="text"/>
+    <setting default="" id="quebajamospassword" label="Quebajamos password" option="hidden" type="text"/>
+    <setting type="sep"/>
+    <setting default="false" id="serieslyaccount" label="Cuenta Series.ly" type="bool"/>
+    <setting default="" id="serieslyuser" label="Series.ly user" type="text"/>
+    <setting default="" id="serieslypassword" label="Series.ly password" option="hidden" type="text"/>
+    <setting type="sep"/>
+    <setting default="false" id="seriesmuaccount" label="Cuenta SeriesMu" type="bool"/>
+    <setting default="" id="seriesmuuser" label="SeriesMu user" type="text"/>
+    <setting default="" id="seriesmupassword" label="SeriesMu password" option="hidden" type="text"/>
+    <setting type="sep"/>
+    <setting default="false" id="stormtvaccount" label="Cuenta Storm.tv" type="bool"/>
+    <setting default="" id="stormtvuser" label="Storm.tv user" type="text"/>
+    <setting default="" id="stormtvpassword" label="Storm.tv password" option="hidden" type="text"/>
+    <setting type="sep"/>    
+    <setting default="false" id="torrentestrenosaccount" label="Cuenta TorrentEstrenos" type="bool"/>
+    <setting default="" id="torrentestrenosuser" label="TorrentEstrenos user" type="text"/>
+    <setting default="" id="torrentestrenospassword" label="TorrentEstrenos password" option="hidden" type="text"/>
+    <setting type="sep"/>    
+    <setting default="false" id="uploadedtopremium" label="Usar Uploaded.to" type="bool"/>
+    <setting default="" id="uploadedtouser" label="Uploaded.to user" type="text"/>
+    <setting default="" id="uploadedtopassword" label="Uploaded.to password" option="hidden" type="text"/>
+  </category>
+  <category label="Canales">
+    <setting default="false" id="personalchannel" label="Canal Personal 1" type="bool"/>
+    <setting default="http://pelisalacarta.mimediacenter.info/personalchannel/samplefeed.rss" id="personalchannelurl" label="Canal Personal 1 Url" type="text"/>
+    <setting default="Ejemplo de canal personal" id="personalchannelname" label="Canal Personal 1 Nombre" type="text"/>
+    <setting default="http://pelisalacarta.mimediacenter.info/personalchannel/sample.png" id="personalchannellogo" label="Canal Personal 1 Logo" type="text"/>
+    <setting default="100" id="personalchannelpage" label="Canal Personal 1 Page" type="text"/>
+    <setting type="sep"/>
+    <setting default="false" id="personalchannel2" label="Canal Personal 2" type="bool"/>
+    <setting default="http://pelisalacarta.mimediacenter.info/personalchannel/samplefeed.rss" id="personalchannelurl2" label="Canal Personal 2 Url" type="text"/>
+    <setting default="Ejemplo de canal personal" id="personalchannelname2" label="Canal Personal 2 Nombre" type="text"/>
+    <setting default="http://pelisalacarta.mimediacenter.info/personalchannel/sample.png" id="personalchannellogo2" label="Canal Personal 2 Logo" type="text"/>
+    <setting default="100" id="personalchannelpage2" label="Canal Personal 2 Page" type="text"/>
+    <setting type="sep"/>
+    <setting default="false" id="personalchannel3" label="Canal Personal 3" type="bool"/>
+    <setting default="100" id="personalchannelurl3" label="Canal Personal 3 Url" type="text"/>
+    <setting default="Ejemplo de canal personal" id="personalchannelname3" label="Canal Personal 3 Nombre" type="text"/>
+    <setting default="http://pelisalacarta.mimediacenter.info/personalchannel/sample.png" id="personalchannellogo3" label="Canal Personal 3 Logo" type="text"/>
+    <setting default="http://pelisalacarta.mimediacenter.info/personalchannel/samplefeed.rss" id="personalchannelpage3" label="Canal Personal 3 Page" type="text"/>
+    <setting type="sep"/>
+    <setting default="false" id="personalchannel4" label="Canal Personal 4" type="bool"/>
+    <setting default="http://pelisalacarta.mimediacenter.info/personalchannel/samplefeed.rss" id="personalchannelurl4" label="Canal Personal 4 Url" type="text"/>
+    <setting default="Ejemplo de canal personal" id="personalchannelname4" label="Canal Personal 4 Nombre" type="text"/>
+    <setting default="http://pelisalacarta.mimediacenter.info/personalchannel/sample.png" id="personalchannellogo4" label="Canal Personal 4 Logo" type="text"/>
+    <setting default="100" id="personalchannelpage4" label="Canal Personal 4 Page" type="text"/>
+    <setting type="sep"/>
+    <setting default="false" id="personalchannel5" label="Canal Personal 5" type="bool"/>
+    <setting default="http://pelisalacarta.mimediacenter.info/personalchannel/samplefeed.rss" id="personalchannelurl5" label="Canal Personal 5 Url" type="text"/>
+    <setting default="Ejemplo de canal personal" id="personalchannelname5" label="Canal Personal 5 Nombre" type="text"/>
+    <setting default="http://pelisalacarta.mimediacenter.info/personalchannel/sample.png" id="personalchannellogo5" label="Canal Personal 5 Logo" type="text"/>
+    <setting default="100" id="personalchannelpage5" label="Canal Personal 5 Page" type="text"/>
+	</category>
+	<category label="Servidores">
+    <setting default="10" id="porcentaje_torrent" label="Porcentaje de inicio de torrents" type="text"/>
+	</category>
+  <category label="Visualización">
+    <setting default="false" id="enableadultmode" label="Mostrar contenido para adultos" type="bool"/>
+    <setting default="false" id="hidepremium" label="Ocultar Servidores premium sin cuenta" type="bool"/>
+    <setting default="2" id="thumbnail_type" label="Modo de thumbnails" lvalues="Poster|Banner|Cuadrado" type="enum" values="0|1|2"/>
+    <setting default="10" id="limite_busquedas" label="Numero de Busquedas a guardar" type="text"/>
+    <setting default="true" id="duracionentitulo" label="Mostrar duración del vídeo en el listado" type="bool"/>
+    <setting default="true" id="calidadentitulo" label="Mostrar calidad del vídeo en el listado" type="bool"/>
+    <setting default="true" id="idiomaentitulo" label="Mostrar idioma del vídeo en el listado" type="bool"/>
+	</category>
+</settings>

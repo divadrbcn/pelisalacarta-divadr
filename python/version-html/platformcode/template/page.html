@@ -1,0 +1,149 @@
+<!DOCTYPE html> 
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <title>pelisalacarta</title> 
+    <link rel="stylesheet" href="/css/pelisalacarta.css" />
+    <script type="text/javascript" src="/js/pelisalacarta.js"></script>
+  </head> 
+  <body> 
+    <div class="Fondo-popup" id="Overlay"> </div>
+    <div class="Loading" id="Loading"><a href="#" id="Loading"></a><span class="Loading"></span><h1 id="Loading-Text">Cargando...</h1></div>
+    
+    <!-- Lista -->
+    <div id="Lista-popup" class="Lista">
+      <a href="#" onmouseover="this.focus()" onclick="EnviarDatos('-1');CerrarDialogos();" class="BotonCerrar"></a>
+      <div class="Titulo" id="Lista-titulo">Menu
+      </div>
+      <div class="ListaContenido" id="Lista">
+        <ul class="Lista" data-role="listview" tabindex="0" >
+        </ul>
+      </div>
+    </div>
+    <!-- Player -->
+    <div id="Player-popup" class="Player">
+      <a href="#" onmouseover="this.focus()" onclick="CerrarDialogos();" class="BotonCerrar"></a>
+      <div class="Titulo" id="Player-titulo">
+      </div>
+      <div id="Player" class="Player-Player">
+      </div>
+    </div>
+    
+    <!-- Alert -->
+    <div id="Alert-popup" class="Alert">
+      <a href="#" onmouseover="this.focus()" onclick="EnviarDatos('OK');CerrarDialogos();" class="BotonCerrar"></a>
+      <div class="Titulo" id="Alert-Titulo">
+      </div>
+      <div Class="AlertTexto" id="Alert-Text">
+      </div>
+      <div class="Botones">
+        <a href="#" class="Boton BotonIcon BotonOK" onmouseover="this.focus()" onclick="EnviarDatos('OK');CerrarDialogos();" >Aceptar</a>
+      </div>
+    </div>
+
+    <!-- AlertYesNo -->
+    <div id="AlertYesNo-popup" class="Alert">
+      <a href="#" onmouseover="this.focus()" onclick="EnviarDatos('no');CerrarDialogos();" class="BotonCerrar"></a>
+      <div class="Titulo" id="AlertYesNo-Titulo">
+      </div>
+      <div Class="AlertTexto" id="AlertYesNo-Text">
+      </div>
+      <div class="Botones">
+        <a href="#" class="Boton BotonIcon BotonOK" onmouseover="this.focus()" onclick="EnviarDatos('yes');CerrarDialogos();" >Si</a>
+        <a href="#" class="Boton BotonIcon BotonClose" onmouseover="this.focus()" onclick="EnviarDatos('no');CerrarDialogos();" >No</a>
+      </div>
+    </div> 
+    <!-- Keyboard -->
+    <div id="Keyboard-popup" class="Keyboard">
+      <a href="#" onmouseover="this.focus()" onclick="EnviarDatos('-1');CerrarDialogos();;" class="BotonCerrar"></a>
+      <div class="Titulo" id="Keyboard-Titulo">
+      </div>
+      <div Class="KeyboardTexto">
+      <div class="Text"><input class="Text" type="text" id="Keyboard-Text" ></div>
+      </div>
+      <div class="Botones">
+        <a href="#" class="Boton BotonIcon BotonOK" onmouseover="this.focus()" onclick="EnviarDatos(document.getElementById('Keyboard-Text').value);CerrarDialogos();AbrirLoading();" >Aceptar</a>
+        <a href="#" class="Boton BotonIcon BotonClose" onmouseover="this.focus()" onclick="EnviarDatos('-1');CerrarDialogos();AbrirLoading();" >Cancelar</a>
+      </div>
+    </div>  
+
+    <!--/Progress -->	
+    <div id="ProgressBar-popup" class="ProgressBar">
+      <a href="#" onmouseover="this.focus()" onclick="this.parentNode.children[1].checked='checked';document.getElementById('ProgressBar-Titulo').innerHTML += ' Cancelando...';" class="BotonCerrar"></a>
+      <div class="Titulo" id="ProgressBar-Titulo">
+      </div>
+    <div Class="ProgressTexto" id="ProgressBar-Text">
+    </div>
+    <div Class="Progress" id="ProgressBar-Bar">
+      <div Class="ProgressBarFondo" id="ProgressBar-BarFondo">
+        <div Class="ProgressBarContenido" id="ProgressBar-Abance">
+        </div>
+      </div>
+    </div>
+        <div class="Botones">
+        <a href="#" class="Boton BotonIcon BotonClose" onmouseover="this.focus()" onclick="this.parentNode.children[1].checked='checked';document.getElementById('ProgressBar-Titulo').innerHTML += ' Cancelando...';" >Cancelar</a>
+        <input type="checkbox" style="display:none" id="ProgressBar-Cancelled"></input>
+      </div>
+    </div> 
+    <!--/Config -->	
+    <div id="Config-popup" class="Config">
+      <a href="#" onmouseover="this.focus()" onclick="GuardarConfig(false);CerrarDialogos();" class="BotonCerrar"></a>
+      <div class="Titulo" id="Config-Titulo">
+      </div>
+      <div class="Config-Secciones" id="Config-secciones">
+      </div>
+      <div id="Config" class="Config-Opciones">
+        <ul data-role="listview" id="Config">
+        </ul>
+      </div>
+      <div id="Config-botones" class="Botones">
+        <a href="#" class="Boton BotonIcon BotonClose" onmouseover="this.focus()" onclick="CerrarDialogos();GuardarConfig(false);" >Cerrar</a>
+        <a href="#" class="Boton BotonIcon BotonOK" onmouseover="this.focus()" onclick="CerrarDialogos();GuardarConfig(true);" >Guardar</a>
+      </div>
+    </div >  
+    <div class="Pagina" id="Pagina">
+    
+      <div class="Cabeza"id="Header">
+        <img src="css/images/logo.png" ></img><h1 id="titulo" class="Title">pelisalacarta</h1>
+      </div>
+
+      <div class="Contenido" id="Contenido" >      
+          <div class="Fila">
+            <div class="Info">
+              <div class="InfoDiv" id="InfoDiv" >
+                <img id="Info-Img" src="" ></img>
+                <h3 id="Info-Title"></h3>
+                <div id="Info-Plot"></div>
+              </div>
+              <div class="InfoDivVersion" id="InfoVersion" >
+                <span class="Version" id="Version"></span><br/>
+                <span class="Version" id="Date"></span>
+              </div>
+            </div>
+            
+            <div class="Items"  id="Contenedor">
+              <ul class="ListItem" data-role="listview" id="itemlist">
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      <div id="Pie" class="Pie">
+        <table style="height:10px; width:100%">
+          <tr>
+            <td style=" text-align:center">
+              <a href="http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta">Saber más sobre Pelisalacarta</a> | <a href="http://www.mimediacenter.info/foro">Foro</a>
+            </td>
+            <td id="Conexion" style="width:150px;text-align:right">
+              Desconectado
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+    WebSocketHost = '{$host}'
+</script>

@@ -16,6 +16,6 @@
     <description lang="en">Movies, Series, Documentaries, Anime, ... everything you can find on Internet now on your media center. Includes channels in Spanish, Italian, English and Romanian.</description>
     <platform>all</platform>
   </extension>
-  <extension point="xbmc.service" library="library_service.py" start="login|startup">
+  <extension point="xbmc.service" library="services.py" start="login|startup">
   </extension>
 </addon>

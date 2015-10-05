@@ -1,7 +1,7 @@
-# -*- coding: iso-8859-1 -*-
+# -*- coding: utf-8 -*-
 #------------------------------------------------------------
 # pelisalacarta - XBMC Plugin
-# Configuraci�n
+# Configuración
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
 
@@ -14,4 +14,12 @@ logger.info("[configuracion.py] init")
 def mainlist(item):
     logger.info("[configuracion.py] mainlist")
     
-    config.open_settings( )
+    if config.get_setting("usepassword") =="true":
+      import guitools
+      password = guitools.Keyboard("", "Escriba la contraseña", True)
+      if password == config.get_setting("password"):
+        config.open_settings()
+      else:
+        guitools.Dialog_OK("Error", "La contraseña no es correcta")
+    else:
+      config.open_settings()

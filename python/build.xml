@@ -33,8 +33,8 @@
     <property name="oldversiondate" value="19/03/2015"/>
 
     <property name="version" value="4.0.3"/>
-    <property name="versionboxee" value="10.12"/>
-    <property name="versiondate" value="19/03/2015"/>
+    <property name="versionboxee" value="4.0.3"/>
+    <property name="versiondate" value="28/08/2015"/>
     <property name="versionchanges" value="Versión semanal"/>
 
     <property name="target" value="../../target/python"/>
@@ -56,7 +56,7 @@
 
     <!-- package =============================================== -->
     <target name="package" depends="clean" description="Builds a package for each platform">
-
+        <antcall target="copy-mediaserver"/>
         <antcall target="copy-kodi-15-isengard"/>
         <antcall target="copy-kodi-15-isengard-ui"/>
         <antcall target="copy-kodi-14-helix"/>
@@ -188,7 +188,40 @@
         </exec>
         <delete file="pelisalacarta-version.xml"/>
     </target>
+    <!-- copy-mediaserver ============================================================ -->
+    <target name="copy-mediaserver">
 
+        <mkdir dir="${target}/mediaserver/pelisalacarta"/>
+
+        <copy todir="${target}/mediaserver/pelisalacarta">
+            <fileset dir="main-classic">
+                <exclude name="**/.*"/>
+                <exclude name="**/.*/**"/>
+                <exclude name="**/*.pyo"/>
+                <exclude name="**/*.pyc"/>
+                <exclude name="resources/*.*"/>
+                <exclude name="resources/skins/**"/>
+                <exclude name="resources/images/posters/**"/>
+                <exclude name="resources/images/servers/**"/>
+                <exclude name="resources/images/fanart/**"/>
+                <exclude name="resources/images/banners/**"/>
+                <exclude name="resources/images/bannermenu/**"/>
+                <exclude name="resources/images/squares/**"/>
+                <exclude name="default.py"/>
+                <exclude name="icon.png"/>
+                <exclude name="fanart.jpg"/>
+                <exclude name="addon.xml"/>
+            </fileset>
+        </copy>
+        <copy overwrite="true" todir="${target}/mediaserver/pelisalacarta">
+            <fileset dir="version-html">
+                <exclude name="**/.*"/>
+                <exclude name="**/.*/**"/>
+            </fileset>
+        </copy>
+        <zip destfile="${target}/mediaserver/pelisalacarta-${version}.zip" basedir="${target}/mediaserver"/>
+
+    </target>
     <!-- copy-kodi-15-isengard ============================================================ -->
     <target name="copy-kodi-15-isengard">
 
@@ -575,57 +608,6 @@
             </fileset>
         </copy>
         <copy file="platformcode/wiimc/platform_name.py" tofile="${target}/wiimc/pelisalacarta/core/platform_name.py" overwrite="true"/>
-    </target>
-
-	<!-- copy-mediaserver ============================================================ -->
-    <target name="copy-mediaserver">
-        <copy todir="${target}/mediaserver/pelisalacarta">
-            <fileset dir=".">
-                <exclude name="target/**"/>
-				<exclude name="addon.xml"/>
-                <exclude name="build.xml"/>
-				<exclude name="pelisalacarta.log"/>
-				<exclude name="pelisalacarta-version.xml"/>
-
-                <exclude name="tester.py"/>
-                <exclude name="download_url.py"/>
-                <exclude name="test_channels.py"/>
-                <exclude name="test_connectors.py"/>
-                <exclude name="script_descargar_lista.py"/>
-
-                <exclude name="fanart.jpg"/>
-                <exclude name="icon.png"/>
-				<exclude name="channelselector-*.py"/>
-                <exclude name="core/platform_name.py"/>
-                <exclude name="**/.*"/>
-                <exclude name="**/.*/**"/>
-                <exclude name="**/*.pyo"/>
-                <exclude name="**/*.pyc"/>
-
-                <exclude name="pelisalacarta/channels/rv_*"/>
-                <exclude name="resources/plexmediaserver/**"/>
-                <exclude name="resources/dreambox/**"/>
-                <exclude name="resources/images/posters/**"/>
-                <exclude name="resources/images/banners/**"/>
-                <exclude name="resources/images/squares/**"/>
-                <exclude name="resources/images/fanart/**"/>
-                <exclude name="resources/images/servers/**"/>
-                <exclude name="resources/images/goear/**"/>
-
-                <exclude name="platformcode/boxee/**"/>
-                <exclude name="platformcode/developer/**"/>
-                <exclude name="platformcode/plex/**"/>
-                <exclude name="platformcode/rss/**"/>
-                <exclude name="platformcode/wiimc/**"/>
-                <!--exclude name="platformcode/mediaserver/**"/-->
-                <exclude name="platformcode/xbmc/**"/>
-                <exclude name="platformcode/xbmcdharma/**"/>
-                <exclude name="platformcode/xbmceden/**"/>
-                <exclude name="platformcode/xbmcfrodo/**"/>
-                <exclude name="platformcode/xbmcgotham/**"/>
-            </fileset>
-        </copy>
-        <copy file="platformcode/mediaserver/platform_name.py" tofile="${target}/mediaserver/pelisalacarta/core/platform_name.py" overwrite="true"/>
     </target>
 
 	<!-- copy-rss ============================================================ -->

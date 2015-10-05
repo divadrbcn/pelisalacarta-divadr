@@ -3,186 +3,289 @@
 # pelisalacarta - XBMC Plugin
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
-import urlparse,urllib2,urllib,re,os,sys
+import urlparse,urllib2,urllib,re
+import sys
 
 from core import config
 from core import logger
 from core.item import Item
-from core import scrapertools
+import channelselector
 
+
+DEBUG = config.get_setting("debug")
+
+__type__ = "generic"
+__title__ = "Buscador"
 __channel__ = "buscador"
 
-logger.info("pelisalacarta.channels.buscador init")
-
-DEBUG = True
+Threads={}
 
 def isGeneric():
     return True
 
-def mainlist(item,preferred_thumbnail="squares"):
-    logger.info("pelisalacarta.channels.buscador mainlist")
-
-    itemlist = []
-    itemlist.append( Item(channel=__channel__ , action="search"  , title="Realizar nueva búsqueda..." ))
-
-    saved_searches_list = get_saved_searches(item.channel)
-
-    for saved_search_text in saved_searches_list:
-        itemlist.append( Item(channel=__channel__ , action="do_search"  , title=' "'+saved_search_text+'"', extra=saved_search_text ))
-
-    if len(saved_searches_list)>0:
-        itemlist.append( Item(channel=__channel__ , action="clear_saved_searches"  , title="Borrar búsquedas guardadas" ))
+def mainlist(item):
+    logger.info("[buscador.py] mainlist")
+    itemlist =[]
+    itemlist.append( Item(channel="buscador", action="search", title="Nueva Búsqueda...", thumbnail="%sthumb_buscar.png"))
+    itemlist.append( Item(channel="buscador", action="MenuConfig", title="Configuración", thumbnail="%sthumb_configuracion.png"))
+    itemlist.extend(listar_busquedas())
 
     return itemlist
+    
+def MenuConfig(item):
+    itemlist =[]
+    itemlist.append( Item(channel="buscador", action="Canales", title="Activar/Desactivar Canales"))
+    itemlist.append( Item(channel="buscador", action="Reset", title="Resetear estadisticas"))
+    if config.get_setting("buscador_resultados") =="1":
+      itemlist.append( Item(channel="buscador", action="CambiarModo", title="Resultados: Por canales"))
+    else:
+      itemlist.append( Item(channel="buscador", action="CambiarModo", title="Resultados: Todo junto"))
+    if config.get_setting("buscador_multithread") =="1":
+      itemlist.append( Item(channel="buscador", action="CambiarMultithread", title="Multithread: Activado"))
+    else:
+      itemlist.append( Item(channel="buscador", action="CambiarMultithread", title="Multithread: Desactivado"))
+    return itemlist
 
-# Al llamar a esta función, el sistema pedirá primero el texto a buscar
-# y lo pasará en el parámetro "tecleado"
 def search(item,tecleado):
-    logger.info("pelisalacarta.channels.buscador search")
+    logger.info("[buscador.py] search "+tecleado)
+    item.url=tecleado
+    return por_tecleado(item)
+    
+def CambiarModo(item):
+  itemlist=[]
+  if config.get_setting("buscador_resultados") =="1":
+    config.set_setting("buscador_resultados",'0')
+  else:
+    config.set_setting("buscador_resultados",'1')
+  from core import guitools
+  guitools.Refresh()
+  
+def CambiarMultithread(item):
+  itemlist=[]
+  if config.get_setting("buscador_multithread") =="1":
+    config.set_setting("buscador_multithread",'0')
+  else:
+    config.set_setting("buscador_multithread",'1')
+  from core import guitools
+  guitools.Refresh()
 
-    if tecleado!="":
-        save_search(item.channel,tecleado)
+def Canales(item):
+    itemlist=[]
+    Canales =  channelselector.listchannels(Item(category=""))
+    Canales.remove(Canales[0])
+    itemlist.append(Item(channel="buscador", action="ActivarTodos", title="Activar Todos"))
+    itemlist.append(Item(channel="buscador", action="DesactivarTodos", title="Desactivar Todos"))
+    for Canal in Canales:
+      IndexConfig, ConfigCanales = ExtraerIndice(Canal.channel)  
+      if ConfigCanales[IndexConfig].split(",")[1] == "1":
+        Titulo = "[x] - " + Canal.title
+      else:
+        Titulo = "[  ] - " + Canal.title
+        
+      if ConfigCanales[IndexConfig].split(",")[2] <> "0":
+        Titulo =("["+ "%05.2f" % float(float(ConfigCanales[IndexConfig].split(",")[3]) / float(ConfigCanales[IndexConfig].split(",")[2])) +" Seg] - ").replace(".", ",") + Titulo
+      else:
+        Titulo = "[00,00 Seg] - "+ Titulo 
+      itemlist.append(Item(channel="buscador", action="ActivarDesactivar", title=Titulo, url=Canal.channel))
 
-    item.extra = tecleado
-    return do_search(item)
+    return itemlist
+    
+def Reset(item):
+    itemlist=[]
+    ConfigCanales = []
+    if config.get_setting("canales_buscador"):
+      ConfigCanales.extend(config.get_setting("canales_buscador").split("|"))
+      IndexConfig = -1
+      for x, Config in enumerate(ConfigCanales):
+        ConfigCanales[x] = ConfigCanales[x].split(",")[0] + "," + ConfigCanales[x].split(",")[1] + "," +"0" + "," +"0"
+      config.set_setting("canales_buscador",'|'.join(ConfigCanales))
+    
+    from core import guitools
+    guitools.Dialog_OK("Pelisalacarta","Estadisticas reseteadas" )
 
-# Esta es la función que realmente realiza la búsqueda
-def do_search(item):
-    logger.info("pelisalacarta.channels.buscador do_search")
+def ExtraerIndice(Canal):
+    ConfigCanales = []
+    if config.get_setting("canales_buscador"):
+      ConfigCanales.extend(config.get_setting("canales_buscador").split("|"))
+    IndexConfig = -1
+    for x, Config in enumerate(ConfigCanales):
+      if Canal in Config:
+        IndexConfig = x
+        break
+    if IndexConfig == -1: 
+      logger.info("[buscador.py] EstraerIndice Creando configuración para: "+ Canal)
+      ConfigCanales.append(Canal + "," + "1" + "," + "0" + "," + "0")
+      config.set_setting("canales_buscador",'|'.join(ConfigCanales))
+      IndexConfig = len(ConfigCanales) - 1
 
-    tecleado = item.extra
+    return IndexConfig, ConfigCanales
+    
+def ActivarDesactivar(item):
+    IndexConfig, ConfigCanales = ExtraerIndice(item.url)
+    Activo = ConfigCanales[IndexConfig].split(",")[1]
+    if Activo == "1":
+      Activo ="0"
+    else:
+      Activo ="1"  
+    ConfigCanales[IndexConfig] =  ConfigCanales[IndexConfig].split(",")[0] +","+ Activo+"," + ConfigCanales[IndexConfig].split(",")[2]+"," + ConfigCanales[IndexConfig].split(",")[3]
+    config.set_setting("canales_buscador",'|'.join(ConfigCanales))
+    itemlist=[]
+    from core import guitools
+    guitools.Refresh()
+    
+def ActivarTodos(item):
+    itemlist=[]
+    ConfigCanales = []
+    if config.get_setting("canales_buscador"):
+      ConfigCanales.extend(config.get_setting("canales_buscador").split("|"))
+      
+    for x, Config in enumerate(ConfigCanales):
+      ConfigCanales[x] =  ConfigCanales[x].split(",")[0] +","+ "1" +"," + ConfigCanales[x].split(",")[2]+"," + ConfigCanales[x].split(",")[3]
+    config.set_setting("canales_buscador",'|'.join(ConfigCanales))
+    from core import guitools
+    guitools.Refresh()
 
+def DesactivarTodos(item):
+    itemlist=[]
+    ConfigCanales = []
+    if config.get_setting("canales_buscador"):
+      ConfigCanales.extend(config.get_setting("canales_buscador").split("|"))
+      
+    for x, Config in enumerate(ConfigCanales):
+      ConfigCanales[x] =  ConfigCanales[x].split(",")[0] +","+ "0" +"," + ConfigCanales[x].split(",")[2]+"," + ConfigCanales[x].split(",")[3]
+    config.set_setting("canales_buscador",'|'.join(ConfigCanales))
+    from core import guitools
+    guitools.Refresh()
+    
+def GuardarTiempo(Canal,Tiempo):
+    if not config.get_setting("canales_buscador"): Canales(Item())
+    ConfigCanales = config.get_setting("canales_buscador").split("|")
+    for x, Config in enumerate(ConfigCanales):
+      if Canal in Config:
+        IndexConfig = x
+        break
+    Busquedas = int(ConfigCanales[x].split(",")[2]) + 1
+    Tiempos = float(ConfigCanales[x].split(",")[3]) + Tiempo
+    ConfigCanales[x] =  ConfigCanales[x].split(",")[0] +","+ ConfigCanales[x].split(",")[1]+"," + str(Busquedas)+"," + str(Tiempos)
+    config.set_setting("canales_buscador",'|'.join(ConfigCanales))
+
+def por_tecleado(item):
+    logger.info("[buscador.py] por_tecleado")
+    import time
+    tecleado =item.url
     itemlist = []
-
-    import os
-    import glob
-    import imp
-
-    master_exclude_data_file = os.path.join( config.get_runtime_path() , "resources", "global_search_exclusion.txt")
-    logger.info("pelisalacarta.channels.buscador master_exclude_data_file="+master_exclude_data_file)
-
-    exclude_data_file = os.path.join( config.get_data_path() , "global_search_exclusion.txt")
-    logger.info("pelisalacarta.channels.buscador exclude_data_file="+exclude_data_file)
-
-    channels_path = os.path.join( config.get_runtime_path() , "channels" , '*.py' )
-    logger.info("pelisalacarta.channels.buscador channels_path="+channels_path)
-
-    excluir=""
-
-    # El fichero que se distribuyó en la 4.0.2 no era completo
-    '''
-    if os.path.exists(exclude_data_file):
-        fileexclude = open(exclude_data_file,"r")
-        excluir= fileexclude.read()
-        fileexclude.close()
-    else:
-        excluir = "seriesly\n"
-        fileexclude = open(exclude_data_file,"w")
-        fileexclude.write(excluir)
-        fileexclude.close()
-    '''
-    if os.path.exists(master_exclude_data_file):
-        logger.info("pelisalacarta.channels.buscador Encontrado fichero exclusiones")
-
-        fileexclude = open(master_exclude_data_file,"r")
-        excluir= fileexclude.read()
-        fileexclude.close()
-    else:
-        logger.info("pelisalacarta.channels.buscador No encontrado fichero exclusiones")
-        excluir = "seriesly\nbuscador\ntengourl\n__init__"
-
-    if config.is_xbmc():
-        show_dialog = True
+    salvar_busquedas(item)
+    channels =  channelselector.listchannels(Item(category=""))
+    channels.remove(channels[0])
+    from threading import Thread
+    from core import guitools
+    progreso = guitools.Dialog_Progress("Buscador","Buscando '"+item.url+"'")
+    x = 0
+    for channel in channels:
+      x+=1
+      IndexConfig, ConfigCanales = ExtraerIndice(channel.channel)  
+      if ConfigCanales[IndexConfig].split(",")[1] == "1":
+        if config.get_setting("buscador_multithread") =="1":
+          Trd = Thread(target=buscar,args=[itemlist,channel,tecleado])
+          progreso.Actualizar(x*100/len(channels),"Lanzando búsqueda: '"+item.url+"' \nEn canal: "+channel.channel)
+          Trd.setDaemon(True)
+          Threads[Trd.name] =None
+          Trd.start()
+          if progreso.IsCanceled(): break
+        else:
+           Inicio = time.time()
+           progreso.Actualizar(x*100/len(channels),"Buscando: '"+item.url+"' \nEn canal: "+channel.channel)
+           buscar(itemlist, channel, tecleado)
+           GuardarTiempo(channel.channel, time.time()-Inicio)
+           if progreso.IsCanceled(): break
+           
+    time.sleep(0.5)
+    if config.get_setting("buscador_multithread") =="1":  
+      Pendientes = []
+      for busqueda in Threads:
+        if Threads[busqueda]["Tiempo"] ==None: Pendientes.append(busqueda)
+        
+      while len(Pendientes):
+        Pend = Pendientes
+        for pendiente in Pend:
+          if not Threads[pendiente]["Tiempo"] ==None or time.time() - Threads[pendiente]["Inicio"] > 10:
+            Threads[pendiente]["Tiempo"] = 10
+            Pendientes.remove(pendiente)
+            
+          progreso.Actualizar(100,"Esperando resultados de: "+str(len(Pendientes)) + " canales")
+          if progreso.IsCanceled(): break
+          
+      for busqueda in Threads:
+        GuardarTiempo(Threads[busqueda]["Canal"], Threads[busqueda]["Tiempo"])
+      
+    itemlist.sort(key=lambda item: item.title.lower().strip())
+    progreso.Cerrar()
+    return itemlist
+    
+def buscar(Globalitemlist,modulo, texto):
+    import threading
+    import urlparse
+    import time
+    Inicio = time.time()
+    Threads[threading.current_thread().name] = {"Canal":modulo.channel,"Inicio": Inicio,"Tiempo":None}
+    ListaCanales = []
 
     try:
-        import xbmcgui
-        progreso = xbmcgui.DialogProgressBG()
-        progreso.create("Buscando "+ tecleado.title())
+      exec "from channels import "+modulo.channel+" as channel"
+      mainlist_itemlist = channel.mainlist(Item())
+      for item in mainlist_itemlist:
+          if item.action =="search":
+            url = item.url
+            itemlist = []
+            itemlist.extend(channel.search(item, texto))
+            if config.get_setting("buscador_resultados") =="1":
+              if len(itemlist)>0:  
+                cantidad = str(len(itemlist))
+                if len(itemlist) >1:
+                  if itemlist[len(itemlist)-1].action <> itemlist[len(itemlist)-2].action:
+                    cantidad = str(len(itemlist)) + "+"
+                ListaCanales.append( Item(channel=__channel__ , thumbnail=urlparse.urljoin(config.get_thumbnail_path(),modulo.channel+".png"),action='buscar_canal', url=modulo.channel +"{}"+ url +"{}"+ texto, title=modulo.title + " (" + cantidad + ")" ))
+            else:
+              
+              if len(itemlist) >1:
+                if itemlist[len(itemlist)-1].action <> itemlist[len(itemlist)-2].action:
+                    itemlist.remove(itemlist[len(itemlist)-1])
+              ListaCanales.extend(itemlist)
+              
     except:
-        show_dialog = False
-
-    channel_files = glob.glob(channels_path)
-    number_of_channels = len(channel_files)
-
-    for index, infile in enumerate(channel_files):
-        percentage = index*100/number_of_channels
-
-        basename = os.path.basename(infile)
-        basename_without_extension = basename[:-3]
-        
-        if basename_without_extension not in excluir:
-
-            if show_dialog:
-                progreso.update(percentage, ' Buscando "' + tecleado+ '"', basename_without_extension)
-
-            logger.info("pelisalacarta.channels.buscador Intentado busqueda en " + basename_without_extension + " de "+ tecleado)
-            try:
-
-                # http://docs.python.org/library/imp.html?highlight=imp#module-imp
-                obj = imp.load_source(basename_without_extension, infile)
-                logger.info("pelisalacarta.channels.buscador cargado " + basename_without_extension + " de "+ infile)
-                channel_result_itemlist = obj.search( Item() , tecleado)
-                for item in channel_result_itemlist:
-                    item.title = item.title + "[" + basename_without_extension + "]"
-                    item.viewmode = "list"
-
-                itemlist.extend( channel_result_itemlist )
-            except:
-                import traceback
-                logger.error( traceback.format_exc() )
-
-        else:
-            logger.info("pelisalacarta.channels.buscador do_search_results, Excluido server " + basename_without_extension)
-
-    itemlist = sorted(itemlist, key=lambda Item: Item.title) 
-
-    if show_dialog:
-        progreso.close()
+      logger.info("No se puede buscar en: "+ modulo.channel)  
+    Globalitemlist.extend( ListaCanales)
+    if config.get_setting("buscador_multithread") =="1":
+      Threads[threading.current_thread().name]["Tiempo"]=time.time()-Inicio
+    
+def buscar_canal(item):
+    itemlist = []
+    logger.info("[buscador.py] buscar_canal")
+    exec "from channels import "+item.url.split("{}")[0]
+    exec "itemlist.extend("+item.url.split("{}")[0]+".search(Item(url=item.url.split('{}')[1]), item.url.split('{}')[2]))"
 
     return itemlist
-
-def save_search(channel,text):
-
-    saved_searches_limit = ( 10, 20, 30, 40, )[ int( config.get_setting( "saved_searches_limit" ) ) ]
-
-    if os.path.exists(os.path.join( config.get_data_path() , "saved_searches.txt" )):
-        f = open( os.path.join( config.get_data_path() , "saved_searches.txt" ) , "r" )
-        saved_searches_list = f.readlines()
-        f.close()
-    else:
-        saved_searches_list = []
-
-    saved_searches_list.append(text)
-
-    if len(saved_searches_list)>=saved_searches_limit:
-        # Corta la lista por el principio, eliminando los más recientes
-        saved_searches_list = saved_searches_list[-saved_searches_limit:]
-
-    f = open( os.path.join( config.get_data_path() , "saved_searches.txt" ) , "w" )
-    for saved_search in saved_searches_list:
-        f.write(saved_search+"\n")
-    f.close()
-
-def clear_saved_searches(item):
-
-    f = open( os.path.join( config.get_data_path() , "saved_searches.txt" ) , "w" )
-    f.write("")
-    f.close()
-
-def get_saved_searches(channel):
-
-    if os.path.exists(os.path.join( config.get_data_path() , "saved_searches.txt" )):
-        f = open( os.path.join( config.get_data_path() , "saved_searches.txt" ) , "r" )
-        saved_searches_list = f.readlines()
-        f.close()
-    else:
-        saved_searches_list = []
-
-    # Invierte la lista, para que el último buscado salga el primero
-    saved_searches_list.reverse()
-
-    trimmed = []
-    for saved_search_text in saved_searches_list:
-        trimmed.append(saved_search_text.strip())
     
-    return trimmed
+def salvar_busquedas(item):
+    limite_busquedas =10
+    presets = config.get_setting("presets_buscados").split("|")
+    if item.url in presets: presets.remove(item.url) 
+    presets.insert(0,item.url)     
+    if limite_busquedas>0:
+          presets = presets[:limite_busquedas]
+    config.set_setting("presets_buscados",'|'.join(presets))
+        
+def listar_busquedas():
+    itemlist=[]
+    presets = config.get_setting("presets_buscados").split("|")
+    for preset in presets:
+        if preset <> "": itemlist.append( Item(channel=__channel__ , context="Borrar,borrar_busqueda", action="por_tecleado", title="- " + preset ,  url=preset, thumbnail="%sthumb_buscar.png"))       
+    return itemlist
+    
+def borrar_busqueda(item):
+    itemlist = []
+    presets = config.get_setting("presets_buscados").split("|")
+    presets.remove(item.url)
+    config.set_setting("presets_buscados",'|'.join(presets))
+    from core import guitools
+    guitools.Refresh()

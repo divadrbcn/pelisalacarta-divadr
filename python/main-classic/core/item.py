@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 class Item(object):
     channel = ""
     title = ""
@@ -5,9 +7,9 @@ class Item(object):
     page = ""
     thumbnail = ""
     plot = ""
-    duration = ""
+    duration = 0
     fanart = ""
-    folder = ""
+    folder = True
     action = ""
     server = "directo"
     extra = ""
@@ -19,74 +21,125 @@ class Item(object):
     context = ""
     subtitle = ""
     totalItems =0
-    overlay = None
+    overlay = ""
     password = ""
     fulltitle = ""
     viewmode = "list"
+    hd = False
+    quality = ""
+    refered_action = ""
+    file=""
+    
+    def __init__(self,  channel = "", title = "", url = "", page = "", thumbnail = "", plot = "", duration = 0, fanart = "", folder = True, action = "", server = "directo" , extra = "", show = "", category = "", childcount = 0, language = "", type = "", context = "", subtitle = "", totalItems =0, overlay = "", password = "", fulltitle = "", viewmode = "list", hd = False, quality="", refered_action = "", file=""):   
+      
+      self.channel = channel
+      self.title = title
+      self.url = url
+      if page=="":
+        self.page = url
+      else:
+        self.page = page
+      
+      self.thumbnail = thumbnail
+      self.plot = plot
+      self.duration = self.StringToTime(duration)
+      self.fanart = fanart
+      self.folder = bool(folder)
+      self.action = action
+      self.server = server
+      self.extra = extra
+      self.show = show
+      self.category = category
+      self.childcount = int(childcount)
+      self.language = language
+      self.type = type      
+      self.context = context
+      self.subtitle = subtitle
+      self.totalItems = int(totalItems)
+      self.overlay = overlay
+      self.password = password
+      self.fulltitle = fulltitle
+      self.viewmode = viewmode
+      self.hd = bool(hd)
+      self.quality=quality
+      self.refered_action = refered_action
+      self.file = file
 
-    def __init__(self, channel="", title="", url="", page="", thumbnail="", plot="", duration="", fanart="", action="", server="directo", extra="", show="", category = "" , language = "" , subtitle="" , folder=True, context = "",totalItems = 0, overlay = None, type="", password="", fulltitle="", viewmode="list" ):
-        self.channel = channel
-        self.title = title
-        self.url = url
-        if page=="":
-            self.page = url
-        else:
-            self.page = page
-        self.thumbnail = thumbnail
-        self.plot = plot
-        self.duration = duration
-        self.fanart = fanart
-        self.folder = folder
-        self.server = server
-        self.action = action
-        self.extra = extra
-        self.show = show
-        self.category = category
-        self.childcount = 0
-        self.language = language
-        self.type = type
-        self.context = context
-        self.subtitle = subtitle
-        self.totalItems = totalItems
-        self.overlay = overlay
-        self.password = password
-        self.fulltitle = fulltitle
-        self.viewmode = viewmode
 
+    def StringToTime(self,string):
+      import datetime
+      import time
+      import math
+      Segundos=0
+      
+      #Si el valor recibido es un String, extrae los Segundos, Minutos y Horas y lo pasa a Segundos.
+      #Formatos válidos: H:M:S, M:S, S
+      if type(string)==str:
+        Segundos = 0
+        Minutos = 0
+        Horas = 0
+        for x, tiempo in enumerate(string.split(":")):
+          if string.count(":") - x ==0:
+            Segundos = int(tiempo)
+          if string.count(":") - x ==1:
+            Minutos = int(tiempo)
+          if string.count(":") - x ==2:
+            Horas = int(tiempo)
+        Segundos = Segundos + (Minutos*60) + (Horas*60*60)
+      else:
+        Segundos=string
+      return int(Segundos)
+
+    #Devuelve el ítem en un string con todos los campos, para ver en el log
     def tostring(self):
-        return "title=["+self.title+"], url=["+self.url+"], thumbnail=["+self.thumbnail+"], action=["+self.action+"], show=["+self.show+"], category=["+self.category+"]"
-    
-    def serialize(self):
-        separator = "|>|<|"
-        devuelve = ""
-        devuelve = devuelve + self.title + separator
-        devuelve = devuelve + self.url + separator
-        devuelve = devuelve + self.channel + separator
-        devuelve = devuelve + self.action + separator
-        devuelve = devuelve + self.server + separator
-        devuelve = devuelve + self.extra + separator
-        devuelve = devuelve + self.category + separator
-        devuelve = devuelve + self.fulltitle + separator
-        devuelve = devuelve + self.viewmode + separator
-        return devuelve
-    
-    def deserialize(self,cadena):
-        trozos=cadena.split("|>|<|")
-        self.title = trozos[0]
-        self.url = trozos[1]
-        self.channel = trozos[2]
-        self.action = trozos[3]
-        self.server = trozos[4]
-        self.extra = trozos[5]
-        self.category = trozos[6]
-        self.fulltitle = trozos[7]
-        self.viewmode = trozos[8]
+      devuelve=""
+      for property, value in sorted(vars(self).iteritems()):
+        if not devuelve:
+          devuelve = property + "=["+str(value)+"]"
+        else:
+          devuelve = devuelve + ", " + property + "=["+str(value)+"]"
 
-if __name__ == "__main__":
-    item = Item(title="bla b", url="http://bla")
-    cadena=item.serialize()
-    print cadena
+      return devuelve
     
-    item2 = Item()
-    item2.deserialize(cadena)
-    print item2.title,item2.url
+    #Serializa todas las propiedades.
+    def serialize(self):
+        separator = "|"
+        devuelve = ""
+        import base64
+        import urllib
+        for property, value in vars(self).iteritems():
+          if str(value)=="False":value=""
+          devuelve = devuelve + base64.b64encode(property + "=" + str(value)) + separator
+        return urllib.quote_plus(base64.b64encode(devuelve))
+        
+    def tojson(self):
+        import json
+        devuelve = {}
+        for property, value in vars(self).iteritems():
+          devuelve[property] = value
+        return json.dumps(devuelve, indent=4, sort_keys=True)
+
+    def fromjson(self,cadena): 
+        import json
+        JSONItem = json.loads(cadena)
+        for key in JSONItem:
+          if type(JSONItem[key]) == unicode:
+            value = JSONItem[key].encode("utf8")
+          else:
+            value = JSONItem[key]
+          
+          exec "self."+key+" = type(self."+key+")(value)"
+
+
+    #Deserializa todas las propiedades.
+    def deserialize(self,cadena): 
+        separator = "|"
+        import base64
+        import urllib
+        for encoded in base64.b64decode(urllib.unquote_plus(cadena)).split(separator):
+          decoded = base64.b64decode(encoded)
+          if len(decoded.split("=")) > 1:
+            property = decoded.split("=")[0]
+            value = decoded.replace(property+"=","")
+            exec "self."+property+" = type(self."+property+")(value)"
+          

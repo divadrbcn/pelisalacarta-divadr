@@ -16,12 +16,27 @@ import os
 import sys
 from core import config
 from core import logger
+from core import guitools
+import navigation
 
-logger.info("pelisalacarta.default init...")
+logger.info("Pelisalacarta init...")
 
 librerias = xbmc.translatePath( os.path.join( config.get_runtime_path(), 'lib' ) )
 sys.path.append (librerias)
+try:
+  config.verify_directories_created()
+  itemlist=[]
+  item = guitools.ExtraerItem()
 
-# Runs xbmc launcher
-from platformcode import launcher
-launcher.run()
+  itemlist = navigation.NextItem(item)
+  if type(itemlist)==list: 
+    if len(itemlist) >0:
+      for x in range(len(itemlist)):
+        nitem, title, thumbnail = navigation.ItemInfo(item, itemlist[x], 2)
+        guitools.AddItem(nitem, title, thumbnail, 2)        
+      guitools.CloseDirectory(item)
+
+except:
+  import traceback
+  logger.error(traceback.format_exc())
+  raise Exception('Error en pelisalacarta, comprueba el log')

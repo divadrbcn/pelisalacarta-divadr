@@ -7,6 +7,7 @@
     <setting id="updatelibrary" type="bool" label="30201" default="true"/>
     <setting id="enableadultmode" type="bool" label="30002" default="false"/>
     <setting id="debug" type="bool" label="30003" default="false"/>
+    <setting id="debuglevel" type="enum" values="Nada|Error|Debug|Info" label="Nivel de Log" default="1"/>
     <setting id="default_action" type="enum" lvalues="30006|30007|30008|30009" label="30005" default="0"/>
     <setting id="thumbnail_type" type="enum" lvalues="30011|30012|30200" label="30010" default="2"/>
     <setting id="languagefilter" type="enum" lvalues="30025|30026|30027|30028|30029|30046|30016|30023|30036|30037" values="0|1|2|3|4" label="30019" default="0"/>
@@ -173,6 +174,14 @@
     <setting id="bookmarkpath" type="text" source="video" option="writeable" label="30030" default=""/>
     <setting id="librarypath" type="text" label="30067" default=""/>
     <setting id="saved_searches_limit" type="enum" values="10|20|30|40" label="30024" default="0"/>
+  </category>
+  
+  <category label="Filters">
+    <setting type="sep" />
+    <setting label="Separate server names by comma" type="lsep"/>
+    <setting id="filter_servers" type="bool" label="Filter by Servers?" default="false"/>
+    <setting id="whitelist" type="text" label="White List:" enable="eq(-1,true)" default=""/>
+    <setting id="blacklist" type="text" label="Black List:" enable="eq(-2,true)" default=""/>
   </category>
 
 </settings>

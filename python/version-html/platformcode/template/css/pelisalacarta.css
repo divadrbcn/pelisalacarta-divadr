@@ -1,0 +1,975 @@
+/*
+Colores:
+Azul Oscuro:  #01455c
+Azul:         #005D7C
+Azul Claro:   #00779f
+
+*/
+/*Documento*/
+
+div.Pagina {
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+body {
+    background-color: #00779f;
+    margin: 0px;
+    font-family: sans-serif;
+}
+div.Loading {
+    background-color: #01455C;
+    border-color: #FFF;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 2px;
+    color: #FFF;
+    display: none;
+    height: 80px;
+    margin: auto;
+    padding: 10px;
+    position: relative;
+    top: 202px;
+    width: 250px;
+    z-index: 9999999;
+}
+div.Loading > h1 {
+    color: #FFF;
+    font-size: 16px;
+    margin: 0px;
+    text-align: center;
+}
+div.Loading > span.Loading {
+    background-image: url("images/ajax-loader.gif");
+    border-radius: 23px;
+    display: block;
+    height: 44px;
+    margin: auto;
+    margin-bottom: 10px;
+    width: 44px;
+}
+:focus {
+    outline: 0;
+}
+div.Color {
+    background-color: #ffffff;
+    text-align: center;
+    border-radius: 10px;
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    position: relative;
+    top: 1px;
+}
+div.Rojo {
+    background-color: red;
+}
+div.Verde {
+    background-color: green;
+}
+div.Azul {
+    background-color: blue;
+}
+div.Amarillo {
+    background-color: yellow;
+}
+/*------------------------Estructura pagina------------------------*/
+
+div.Contenido {
+    overflow: hidden;
+    padding: 0;
+    width: 100%;
+    height: 100%
+}
+div.Fila {
+    height: 100%;
+    padding: 20px;
+    padding-right: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+div.Fila > div.Items {
+    height: 100%;
+    width: 60%;
+    overflow: hidden;
+    float: left;
+    padding-left: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+div.Fila > div.Info {
+    height: 100%;
+    width: 40%;
+    float: left;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-right: 10px;
+}
+/*------------------------Header Pagina------------------------*/
+
+div.Cabeza {
+    background-color: #01455c;
+    color: #ffffff;
+    height: 50px;
+}
+div.Cabeza > img {
+    float: left;
+    height: 100%
+}
+div.Cabeza > h1.Title {
+    position: relative;
+    left: 20px;
+    top: 10px;
+    margin: 0px;
+    text-align: left;
+    font-size: 1.2em;
+}
+/*------------------------Pie Pagina------------------------*/
+
+div.Pie {
+    background-color: #01455c;
+    text-shadow: none;
+    border-style: none;
+    color: #38C;
+}
+div.Pie > table > tbody> tr > td {
+    color: #38C;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: left;
+}
+div.Pie > table > tbody> tr > td >a {
+    color: #38C;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+}
+/*------------------------Panel Info------------------------*/
+
+div.Info > .InfoDiv {
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    background-color: #005d7c;
+    text-align: center;
+    color: #ffffff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+div.Info > .InfoDivVersion {
+    color: #ffffff;
+    font-size: 12px;
+    width: inherit;
+    position: absolute;
+    text-align: right;
+    padding-right: 35px;
+    margin-top: -40px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+div.Info > .InfoDiv > img {
+    height: 60%;
+    max-width:100%;
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+div.Info > .InfoDiv > h3 {
+    font-size: 10pt;
+    display: none;
+    height: 10%;
+    margin: 0px;
+    border-top-style: solid;
+    border-top-width: 10px;
+    border-top-color: transparent;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+div.Info > .InfoDiv > div {
+    font-size: 10pt;
+    text-align: justify;
+    display: none;
+    width: 100%;
+    overflow: hidden;
+    height: 30%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+div.Fondo-popup {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    margin: 0;
+    background-color: #00779f;
+    opacity: 0.8;
+    display: none;
+    position: fixed;
+    z-index: 100;
+}
+/*------------------------Dialogos------------------------*/
+
+div.Titulo {
+    background-color: #01455c;
+    overflow: hidden;
+    height: 30px;
+    color: #ffffff;
+    text-align: center;
+    background-color: #01455C;
+    overflow: hidden;
+    height: 30px;
+    color: #FFF;
+    text-align: center;
+    padding-top: 5px;
+    margin-bottom: -5px;
+    white-space: nowrap;
+    padding-right: 25px;
+    text-overflow: ellipsis;
+}
+a.BotonCerrar:after {
+    background-color: rgba(0, 0, 0, 0.3);
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22iso-8859-1%22%3F%3E%3C!DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20%20width%3D%2214px%22%20height%3D%2214px%22%20viewBox%3D%220%200%2014%2014%22%20style%3D%22enable-background%3Anew%200%200%2014%2014%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpolygon%20fill%3D%22%23FFF%22%20points%3D%2214%2C3%2011%2C0%207%2C4%203%2C0%200%2C3%204%2C7%200%2C11%203%2C14%207%2C10%2011%2C14%2014%2C11%2010%2C7%20%22%2F%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    border-radius: 16px;
+    content: "";
+    display: block;
+    height: 22px;
+    left: 50%;
+    margin-left: -11px;
+    margin-top: -11px;
+    position: absolute;
+    top: 50%;
+    width: 22px;
+}
+a.BotonCerrar {
+    border-color: #F6F6F6;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    background-color: #F6F6F6;
+    border-radius: 10px;
+    height: 20px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+a.BotonCerrar:focus {
+    background-color: #01455c;
+    border-color: #ffffff;
+}
+a.Boton {
+    background-color: #005D7C;
+    border-color: #005D7C;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    color: #FFF;
+    display: inline-block;
+    font-size: 12.5px;
+    font-weight: 700;
+    padding-bottom: 8.75px;
+    padding-left: 12.5px;
+    padding-right: 12.5px;
+    padding-top: 8.75px;
+    position: relative;
+    top: 4px;
+    text-decoration: none;
+}
+a.BotonIcon {
+    padding-left: 37.5px;
+}
+a.BotonOK:after {
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22iso-8859-1%22%3F%3E%3C!DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20%20width%3D%2214px%22%20height%3D%2214px%22%20viewBox%3D%220%200%2014%2014%22%20style%3D%22enable-background%3Anew%200%200%2014%2014%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpolygon%20style%3D%22fill%3A%23FFFFFF%3B%22%20points%3D%2214%2C4%2011%2C1%205.003%2C6.997%203%2C5%200%2C8%204.966%2C13%204.983%2C12.982%205%2C13%20%22%2F%3E%3C%2Fsvg%3E");
+    background-color: rgba(0, 0, 0, 0.3);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    border-radius: 16px;
+    content: "";
+    display: block;
+    height: 22px;
+    left: 20px;
+    margin-left: -11px;
+    margin-top: -11px;
+    position: absolute;
+    top: 50%;
+    width: 22px
+}
+a.BotonClose:after {
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22iso-8859-1%22%3F%3E%3C!DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20%20width%3D%2214px%22%20height%3D%2214px%22%20viewBox%3D%220%200%2014%2014%22%20style%3D%22enable-background%3Anew%200%200%2014%2014%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpolygon%20fill%3D%22%23FFF%22%20points%3D%2214%2C3%2011%2C0%207%2C4%203%2C0%200%2C3%204%2C7%200%2C11%203%2C14%207%2C10%2011%2C14%2014%2C11%2010%2C7%20%22%2F%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3Cg%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+    background-color: rgba(0, 0, 0, 0.3);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    border-radius: 16px;
+    content: "";
+    display: block;
+    height: 22px;
+    left: 20px;
+    margin-left: -11px;
+    margin-top: -11px;
+    position: absolute;
+    top: 50%;
+    width: 22px
+}
+a.Boton:focus {
+    background-color: #01455c;
+    border-color: #ffffff;
+    border-style: solid;
+}
+div.Botones {
+    border-top-style: solid;
+    border-top-color: #01455c;
+    border-top-width: 2px;
+    height: 45px;
+    background-color: #00779f;
+    text-align: center;
+}
+/*------------------------Progress------------------------*/
+
+div.ProgressBar {
+    display: none;
+    background-color: #00779F;
+    width: 500px;
+    margin: auto;
+    top: 150px;
+    position: relative;
+    z-index: 101;
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 2px;
+}
+div.ProgressBar > div.Progress {
+    background-color: #00779f;
+    margin-bottom: 10px;
+}
+div.ProgressBar > div.Progress > div.ProgressBarFondo {
+    margin-left: 5px;
+    margin-right: 5px;
+    height: 10px;
+    background-color: #005D7C;
+}
+div.ProgressBar > div.Progress > div.ProgressBarFondo > div.ProgressBarContenido {
+    width: 0%;
+    height: 10px;
+    background-color: #ffffff;
+}
+div.ProgressBar > div.ProgressTexto {
+    overflow: hidden;
+    min-height: 70px;
+    max-height: 300px;
+    background-color: #00779f;
+    text-align: left;
+    padding: 10px;
+    overflow-y: auto;
+    color: #ffffff;
+}
+/*------------------------Teclado------------------------*/
+
+div.Keyboard {
+    display: none;
+    background-color: #00779F;
+    width: 500px;
+    margin: auto;
+    top: 150px;
+    position: relative;
+    z-index: 101;
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 2px;
+}
+div.Keyboard > div.KeyboardTexto {
+    background-color: #00779f;
+    padding: 10px;
+}
+div.Keyboard > div.KeyboardTexto > div.Text {
+    background-color: #FFF;
+    border-color: #DDD;
+    border-radius: 3.9px;
+    border-style: solid;
+    border-width: 1px;
+    color: #333;
+    font-size: 12.5px;
+    height: 28px;
+    margin: 4px;
+}
+div.Keyboard > div.KeyboardTexto > div.Text > input.Text {
+    background-color: transparent;
+    border-style: none;
+    box-sizing: border-box;
+    color: #333;
+    display: block;
+    font-size: 14px;
+    margin: 0px;
+    height: 28px;
+    padding: 5.6px;
+    text-align: left;
+    width: 100%;
+}
+/*------------------------Alert------------------------*/
+
+div.Alert {
+    display: none;
+    background-color: #00779F;
+    width: 500px;
+    margin: auto;
+    top: 150px;
+    position: relative;
+    z-index: 101;
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 2px;
+}
+div.Alert > div.AlertTexto {
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-height: 70px;
+    max-height: 300px;
+    background-color: #00779f;
+    text-align: left;
+    padding: 10px;
+    color: #ffffff;
+}
+/*------------------------Player------------------------*/
+
+div.Player {
+    display: none;
+    background-color: #00779F;
+    width: 500px;
+    margin: auto;
+    top: 150px;
+    position: relative;
+    z-index: 101;
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 2px;
+}
+div.Player > div.Player-Player {
+    background-color: #00779f;
+    text-align: left;
+    padding: 0px;
+    color: #ffffff;
+}
+div.Player > div.Player-Player > div.VideoCaja {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+}
+div.Player > div.Player-Player > div.VideoCaja:before {
+    content: "";
+    display: block;
+    padding-top: 55.5%;
+}
+div.Player > div.Player-Player > div.VideoCaja > div.VideoContenido {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin-bottom: -5px;
+}
+/*------------------------Servidor------------------------*/
+
+div.Servidor {
+    display: none;
+    background-color: #00779F;
+    width: 500px;
+    margin: auto;
+    top: 150px;
+    position: relative;
+    z-index: 101;
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 2px;
+}
+div.Servidor > div.ServidorOpciones {
+    background-color: #00779f;
+}
+div.Servidor > div.ServidorOpciones > ul.ListItem > li.ListItem {
+    border-style: solid;
+    border-width: 6px;
+    border-bottom-width: 3px;
+    border-top-width: 3px;
+    border-color: transparent;
+    padding: 0px;
+}
+div.Servidor > div.ServidorOpciones > ul.ListItem > li.ListItem > div.ListItem {
+    height: 38px;
+    background-color: #005d7c;
+    color: #ffffff;
+    border-style: solid;
+    border-width: 4px;
+    border-color: transparent;
+}
+div.Servidor > div.ServidorOpciones > ul.ListItem > li.ListItem > div.ListItem-hover {
+    background-color: #01455c;
+    border-color: #ffffff;
+}
+div.Servidor > div.ServidorOpciones > ul.ListItem > li.ListItem > div.ListItem > h3.Ajuste {
+    margin: 0px;
+    width: 210px;
+    float: left;
+    padding: 9px;
+    font-size: 15px;
+}
+div.Servidor > div.ServidorOpciones > ul.ListItem > li.ListItem > div.ListItem > span.Control {
+    float: left;
+    width: 244px;
+}
+div.Servidor > div.ServidorOpciones > ul.ListItem > li.ListItem > div.ListItem > span.Control> div.Text {
+    background-color: #FFF;
+    border-radius: 3.9px;
+    margin: 4px;
+    height: 28px;
+    width: 244px;
+}
+div.Servidor > div.ServidorOpciones > ul.ListItem > li.ListItem > div.ListItem > span.Control> div.Text >input.Text {
+    background-color: transparent;
+    border-style: none;
+    color: #333;
+    font-size: 14px;
+    height: 28px;
+    width: 100%;
+    padding: 5.6px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+/*------------------------Lista------------------------*/
+
+div.Lista {
+    display: none;
+    background-color: #00779F;
+    width: 350px;
+    margin: auto;
+    top: 150px;
+    position: relative;
+    z-index: 101;
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 2px;
+}
+div.Lista > div.ListaContenido {
+    overflow-y: hidden;
+}
+div.Lista > div.ListaContenido > ul.Lista {
+    background-color: #00779f;
+    max-height: 500px;
+    overflow: auto;
+    padding: 0px;
+    margin: 0px;
+}
+div.Lista > div.ListaContenido > ul.Lista > li.Lista {
+    border-color: transparent;
+    border-style: solid;
+    border-width: 6px;
+}
+div.Lista > div.ListaContenido > ul.Lista > li.Lista > a.Lista > h3 {
+    color: #FFF;
+    font-size: 16px;
+    margin-bottom: 7.2px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 7.2px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+div.Lista > div.ListaContenido > ul.Lista > li.Lista > a.Lista:after {
+    background-color: rgba(0, 0, 0, 0.3);
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22iso-8859-1%22%3F%3E%3C!DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20%20width%3D%2214px%22%20height%3D%2214px%22%20viewBox%3D%220%200%2014%2014%22%20style%3D%22enable-background%3Anew%200%200%2014%2014%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpath%20style%3D%22fill%3A%23FFFFFF%3B%22%20d%3D%22M9%2C5v3l5-4L9%2C0v3c0%2C0-5%2C0-5%2C7C6%2C5%2C9%2C5%2C9%2C5z%20M11%2C12H2V5h1l2-2H0v11h13V7l-2%2C2V12z%22%2F%3E%3C%2Fsvg%3E");
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    border-radius: 16px;
+    color: #FFF;
+    content: "";
+    display: block;
+    height: 22px;
+    left: 9px;
+    margin-top: -11px;
+    position: absolute;
+    top: 50%;
+    width: 22px;
+}
+div.Lista > div.ListaContenido > ul.Lista > li.Lista > a.Lista {
+    background-color: #005D7C;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 4px;
+    display: block;
+    height: 30px;
+    padding-bottom: 5px;
+    padding-left: 40px;
+    padding-right: 5px;
+    padding-top: 0px;
+    position: relative;
+    text-decoration: none;
+}
+div.Lista > div.ListaContenido > ul.Lista > li.Lista > a.Lista:focus {
+    background-color: #01455c;
+    border-color: #ffffff;
+}
+/*------------------------Popup Config------------------------*/
+
+div.Config {
+    display: none;
+    background-color: #00779F;
+    width: 600px;
+    margin: auto;
+    top: 150px;
+    position: relative;
+    z-index: 101;
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 2px;
+}
+div.Config > div.Config-Secciones {
+    border-bottom-style: solid;
+    border-bottom-color: #01455c;
+    border-bottom-width: 2px;
+    height: 45px;
+    background-color: #00779f;
+    text-align: center;
+}
+div.Config > div.Config-Opciones {
+    height: 300px;
+    overflow-y: auto;
+    background-color: #00779f;
+}
+div.Config > div.Config-Opciones > ul.ListItem > li.ListItem {
+    border-style: solid;
+    border-width: 6px;
+    border-bottom-width: 3px;
+    border-top-width: 3px;
+    border-color: transparent;
+    padding: 0px;
+}
+div.Config > div.Config-Opciones > ul.ListItem > li.ListItem > div.ListItem {
+    height: 38px;
+    background-color: #005d7c;
+    color: #ffffff;
+    border-style: solid;
+    border-width: 4px;
+    border-color: transparent;
+}
+div.Config > div.Config-Opciones > ul.ListItem > li.ListItem > div.Separador {
+    height: 5px;
+    background-color: #01455c;
+}
+div.Config > div.Config-Opciones > ul.ListItem > li.ListItem > div.ListItem-hover {
+    background-color: #01455c;
+    border-color: #ffffff;
+}
+div.Config > div.Config-Opciones > ul.ListItem > li.ListItem > div.ListItem > h3.Ajuste {
+    margin: 0px;
+    width: 295px;
+    float: left;
+    padding: 9px;
+    font-size: 15px;
+}
+div.Config > div.Config-Opciones > ul.ListItem > li.ListItem > div.ListItem > span.Control {
+    float: left;
+    width: 244px;
+}
+div.Config > div.Config-Opciones > ul.ListItem > li.ListItem > div.ListItem > span.Control> div.Text,
+div.Config > div.Config-Opciones > ul.ListItem > li.ListItem > div.ListItem > span.Control> div.Select {
+    background-color: #FFF;
+    border-radius: 3.9px;
+    margin: 4px;
+    height: 28px;
+    width: 244px;
+}
+div.Config > div.Config-Opciones > ul.ListItem > li.ListItem > div.ListItem > span.Control> div.Check {
+    border-radius: 3.9px;
+    margin: 4px;
+    height: 28px;
+    width: 28px;
+}
+div.Config > div.Config-Opciones > ul.ListItem > li.ListItem > div.ListItem > span.Control> div.Text >input.Text,
+div.Config > div.Config-Opciones > ul.ListItem > li.ListItem > div.ListItem > span.Control> div.Select > select.Select {
+    background-color: transparent;
+    border-style: none;
+    color: #333;
+    font-size: 14px;
+    height: 28px;
+    width: 100%;
+    padding: 5.6px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+div.Config > div.Config-Opciones > ul.ListItem > li.ListItem > div.ListItem > span.Control> div.Check > input.Check {
+    background-color: transparent;
+    height: 28px;
+    width: 28px;
+    border-style: none;
+    margin: 0px;
+}
+/*------------------------ItemList------------------------*/
+
+div.ListItemDiv {
+    float: left;
+    overflow-y: auto;
+}
+ul.ListItem {
+    height: inherit;
+    margin: 0px;
+    overflow-y: auto;
+    padding: 0px;
+}
+ul.ListItem > li.ListItemBanner > a.ListItem {
+    background-color: #005D7C;
+    border-color: transparent;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 4px;
+    color: #FFF;
+    display: block;
+    height: 60px;
+    overflow: hidden;
+    padding: 5px;
+    padding-left: 120px;
+    padding-right: 5px;
+    position: relative;
+    text-decoration: none;
+}
+ul.ListItem > li.ListItemBanner > a.ListItem > div.ListItem {
+    left: 0;
+    top: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+ul.ListItem > li.ListItemBanner > a.ListItem > div.ListItem > img.ListItem {
+    color: transparent;
+    border-style: none;
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    width: 100%;
+}
+ul.ListItem > li.ListItemBanner > a.ListItem > h3.ListItem {
+    margin: 0px;
+    font-size: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    position: absolute;
+    display: table-cell;
+    padding-top: 19px;
+}
+ul.ListItem > li.ListItemChannels > a.ListItem {
+    background-color: #005D7C;
+    border-color: transparent;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 4px;
+    color: #FFF;
+    display: block;
+    height: 60px;
+    overflow: hidden;
+    padding: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
+    position: relative;
+    text-decoration: none;
+}
+ul.ListItem > li.ListItemChannels > a.ListItem > div.ListItem {
+    left: 0;
+    top: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+ul.ListItem > li.ListItemChannels > a.ListItem > div.ListItem > img.ListItem {
+    color: transparent;
+    border-style: none;
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    width: 100%;
+}
+ul.ListItem > li.ListItemChannels > a.ListItem > h3.ListItem {
+    margin: 0px;
+    font-size: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    position: absolute;
+    display: table-cell;
+    padding-top: 19px;
+    text-align: center;
+    width: 100%
+}
+ul.ListItem > li.ListItem > a.ListItem {
+    background-color: #005D7C;
+    border-color: transparent;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 4px;
+    color: #FFF;
+    display: block;
+    height: 60px;
+    overflow: hidden;
+    padding: 5px;
+    padding-left: 90px;
+    padding-right: 5px;
+    position: relative;
+    text-decoration: none;
+}
+ul.ListItem > li.ListItem > a.ListItem > div.ListItem {
+    left: 0;
+    top: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+ul.ListItem > li.ListItem > a.ListItem > div.ListItem > img.ListItem {
+    color: transparent;
+    border-style: none;
+    display: inline-block;
+    vertical-align: middle;
+    height: inherit;
+    width: 70px;
+    position: absolute;
+}
+ul.ListItem > li.ListItem > a.ListItem > h3.ListItem {
+    margin-top: 5px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    font-size: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+ul.ListItem > li.ListItem > a.ListItem > p.ListItem {
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 15px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+ul.ListItem > li.ListItemBanner > a.ListItem > div.ListItem > img.Default,
+ul.ListItem > li.ListItemChannels > a.ListItem > div.ListItem > img.Default,
+ul.ListItem > li.ListItem > a.ListItem > div.ListItem > img.Default {
+    color: transparent;
+    border-style: none;
+    display: inline-block;
+    vertical-align: middle;
+    max-height: 57px;
+    max-width: 57px;
+    display: none;
+}
+ul.ListItem > li.ListItemBanner > a.ListItem > p.ListItemAtras:after,
+ul.ListItem > li.ListItemChannels > a.ListItem > p.ListItemAtras:after,
+ul.ListItem > li.ListItem > a.ListItem > p.ListItemAtras:after {
+    content: "\200E";
+}
+ul.ListItem > li.ListItemBanner > a.ListItem > p.ListItem > span.Atras,
+ul.ListItem > li.ListItemChannels > a.ListItem > p.ListItem > span.Atras,
+ul.ListItem > li.ListItem > a.ListItem > p.ListItem > span.Atras {
+    font-size: 10px;
+    text-overflow: ellipsis;
+    direction: ltr;
+}
+ul.ListItem > li.ListItemBanner > a.ListItem > p.ListItem > span.Atras > span.AtrasUltimo,
+ul.ListItem > li.ListItemChannels > a.ListItem > p.ListItem > span.Atras > span.AtrasUltimo,
+ul.ListItem > li.ListItem > a.ListItem > p.ListItem > span.Atras > span.AtrasUltimo {
+    font-size: 12px;
+    direction: ltr;
+    color: orange;
+}
+ul.ListItem > li.ListItemBanner,
+ul.ListItem > li.ListItemChannels,
+ul.ListItem > li.ListItem {
+    border-bottom-color: transparent;
+    border-bottom-style: solid;
+    border-bottom-width: 13px;
+    border-radius: 5px;
+    display: block;
+    font-size: 16px;
+    padding-right: 20px;
+    position: relative;
+}
+ul.ListItem > li.ListItemBanner > a.ListItem:focus,
+ul.ListItem > li.ListItemChannels > a.ListItem:focus,
+ul.ListItem > li.ListItem > a.ListItem:focus {
+    background-color: #01455c;
+    border-color: #ffffff;
+}
+ul.ListItem > li.ListItemBanner > a.ListItemButton,
+ul.ListItem > li.ListItemChannels > a.ListItemButton,
+ul.ListItem > li.ListItem > a.ListItemButton {
+    background-color: #005D7C;
+    border-color: transparent;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 4px;
+    display: block;
+    height: 60px;
+    padding: 5px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin-right: 20px;
+    width: 20px;
+}
+ul.ListItem > li.ListItemBanner > a.ListItemButton:after,
+ul.ListItem > li.ListItemChannels > a.ListItemButton:after,
+ul.ListItem > li.ListItem > a.ListItemButton:after {
+    background-color: rgba(0, 0, 0, 0.3);
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22iso-8859-1%22%3F%3E%3C!DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20%20width%3D%2214px%22%20height%3D%2214px%22%20viewBox%3D%220%200%2014%2014%22%20style%3D%22enable-background%3Anew%200%200%2014%2014%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpath%20style%3D%22fill%3A%23FFFFFF%3B%22%20d%3D%22M1%2C4h12c0.553%2C0%2C1-0.447%2C1-1s-0.447-1-1-1H1C0.447%2C2%2C0%2C2.447%2C0%2C3S0.447%2C4%2C1%2C4z%20M13%2C6H1%20C0.447%2C6%2C0%2C6.447%2C0%2C7c0%2C0.553%2C0.447%2C1%2C1%2C1h12c0.553%2C0%2C1-0.447%2C1-1C14%2C6.447%2C13.553%2C6%2C13%2C6z%20M13%2C10H1c-0.553%2C0-1%2C0.447-1%2C1%20s0.447%2C1%2C1%2C1h12c0.553%2C0%2C1-0.447%2C1-1S13.553%2C10%2C13%2C10z%22%2F%3E%3C%2Fsvg%3E");
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    border-radius: 16px;
+    color: #333;
+    content: "";
+    cursor: pointer;
+    display: block;
+    height: 22px;
+    left: 50%;
+    margin-left: -11px;
+    margin-top: -11px;
+    position: absolute;
+    top: 50%;
+    width: 22px;
+}
+ul.ListItem > li.ListItemBanner > a.ListItemButton:focus,
+ul.ListItem > li.ListItemChannels > a.ListItemButton:focus,
+ul.ListItem > li.ListItem > a.ListItemButton:focus {
+    border-style: solid;
+    border-width: 4px;
+    background-color: #01455c;
+    border-color: #ffffff;
+}
+ul.ListItem > li.ListItemBanner > a.ListItemMenu,
+ul.ListItem > li.ListItemChannels > a.ListItemMenu,
+ul.ListItem > li.ListItem > a.ListItemMenu {
+    margin-right: 40px;
+}
+ul.ListItem > li.ListItemBanner > a.ListItemButton:focus,
+ul.ListItem > li.ListItemChannels > a.ListItemButton:focus,
+ul.ListItem > li.ListItem > a.ListItemButton:focus {
+    border-style: solid;
+    border-width: 4px;
+    background-color: #01455c;
+    border-color: #ffffff;
+}

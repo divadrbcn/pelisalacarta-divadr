@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+    <allowoverlays>false</allowoverlays>
+    <controls>
+      <control type="group" id="100">
+        <height>71</height>
+        <width>1280</width>
+        <control type="image">
+            <texture>main-header.jpg</texture>
+        </control>
+        <control type="image">
+            <left>10</left>
+            <top>10</top>
+            <width>50</width>
+            <height>40</height>
+            <texture>main-logo.png</texture>
+        </control>
+        <control type="label" id="101">
+            <left>100</left>
+            <height>71</height>
+            <font>font14</font>
+            <textcolor>FFCCCCCC</textcolor>
+            <align>left</align>
+            <aligny>center</aligny>
+            <label>pelisalacarta</label>
+        </control>
+      </control>
+      <control type="group" id="200">
+        <top>71</top>
+        <width>500</width>
+        <control type="image">
+            <texture>main-background.jpg</texture>
+        </control>
+        <control type="image">
+            <top>20</top>
+            <bottom>19</bottom>
+            <left>20</left>
+            <right>10</right>
+            <texture>info-background.jpg</texture>
+        </control>
+        
+
+        <!-- poster -->
+        <control type="image" id="201">
+            <top>30</top>
+            <left>30</left>
+            <width>450</width>
+            <height>340</height>
+            <aspectratio scalediffuse="false" align="center" aligny="top">keep</aspectratio>
+            <texture></texture>
+        </control>
+        
+        <!-- title -->
+        <control type="textbox" id="202">
+            <left>30</left>
+            <top>380</top>
+            <width>450</width>
+            <height>40</height>
+            <font>font12</font>
+            <textcolor>FFFFFFFF</textcolor>
+            <align>center</align>
+            <wrapmultiline>true</wrapmultiline>
+            <label></label>
+        </control>
+        <!-- plot -->
+        <control type="textbox" id="203">
+            <left>30</left>
+            <top>420</top>
+            <width>450</width>
+            <height>200</height>
+            <font>font10</font>
+            <textcolor>FFFFFFFF</textcolor>
+            <aligny>top</aligny>
+            <align>center</align>
+            <wrapmultiline>true</wrapmultiline>
+            <autoscroll delay="2000" time="800" repeat="2000">true</autoscroll>
+            <label></label>
+        </control>
+        <!-- app version -->
+        <control type="label" id="204">
+            <right>20</right>
+            <bottom>25</bottom>
+            <height>30</height>
+            <font>font10_title</font>
+            <textcolor>FFCCCCCC</textcolor>
+            <align>right</align>
+            <label>pelisalacarta 4.0.3</label>
+        </control>
+        <control type="label" id="205">
+            <right>20</right>
+            <bottom>10</bottom>
+            <height>30</height>
+            <font>font10_title</font>
+            <textcolor>FFCCCCCC</textcolor>
+            <align>right</align>
+            <label>31/Agosto/2015</label>
+        </control>
+      </control>
+      <control type="group" id="300">
+        <left>500</left>
+        <top>71</top>
+        <width>780</width>
+        <height>649</height>
+        <control type="image">
+          <texture>main-background.jpg</texture>
+        </control>
+        
+        <control type="list" id="301">
+            <top>20</top>
+            <bottom>10</bottom>
+            <left>10</left>
+            <right>45</right>
+            <focusposition>1</focusposition>
+            <pagecontrol>304</pagecontrol>
+            <itemlayout width="725" height="88">
+               <control type="image">
+                    <height>82</height>
+                    <texture>menu-nofocus.png</texture>
+                    <bordersize>5</bordersize>
+                    <bordertexture>main-header.jpg</bordertexture>
+                </control>
+                <control type="image">
+                    <top>5</top>
+                    <left>5</left>
+                    <right>5</right>
+                    <bottom>11</bottom>
+                    <info>ListItem.Icon</info>
+                    <aspectratio align="left" aligny="top">stretch</aspectratio>
+                </control>
+                <control type="label">
+                    <left>140</left>
+                    <height>82</height>
+                    <font>font8</font>
+                    <textcolor>FFFFFFFF</textcolor>
+                    <align>left</align>
+                    <aligny>center</aligny>
+                    <info>ListItem.Label</info>
+                </control>
+            </itemlayout>
+            <focusedlayout width="725" height="88">   
+               <control type="image">
+                    <height>82</height>
+                    <texture>main-header.jpg</texture>
+                    <bordersize>5</bordersize>
+                    <bordertexture>white.png</bordertexture>
+                </control>
+                <control type="image">
+                    <top>5</top>
+                    <left>5</left>
+                    <right>5</right>
+                    <bottom>11</bottom>
+                    <info>ListItem.Icon</info>
+                    <aspectratio align="left" aligny="top">stretch</aspectratio>
+                </control>  
+                <control type="label">
+                    <left>140</left>
+                    <height>82</height>
+                    <font>font8</font>
+                    <textcolor>FFFFFFFF</textcolor>
+                    <align>left</align>
+                    <aligny>center</aligny>
+                    <info>ListItem.Label</info>
+                </control>
+            </focusedlayout>
+        </control>
+        
+        <control type="list" id="302">
+            <top>20</top>
+            <bottom>10</bottom>
+            <left>10</left>
+            <right>45</right>
+            <focusposition>1</focusposition>
+            <pagecontrol>304</pagecontrol>
+            <itemlayout width="725" height="88">
+                 <control type="image">
+                    <height>82</height>
+                    <texture>menu-nofocus.png</texture>
+                    <bordersize>5</bordersize>
+                    <bordertexture>main-header.jpg</bordertexture>
+                </control>
+                <control type="label">
+                    <height>82</height>
+                    <font>font8</font>
+                    <textcolor>FFFFFFFF</textcolor>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <info>ListItem.Label</info>
+                </control>
+                <control type="image">
+                    <top>5</top>
+                    <left>5</left>
+                    <right>5</right>
+                    <bottom>11</bottom>
+                    <info>ListItem.Icon</info>
+                    <aspectratio align="left" aligny="top">stretch</aspectratio>
+                </control>
+            </itemlayout>
+            <focusedlayout width="725" height="88">
+                <control type="image">
+                    <height>82</height>
+                    <texture>main-header.jpg</texture>
+                    <bordersize>5</bordersize>
+                    <bordertexture>white.png</bordertexture>
+                </control>
+                <control type="label">
+                    <height>82</height>
+                    <font>font8</font>
+                    <textcolor>FFFFFFFF</textcolor>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <info>ListItem.Label</info>
+                </control>
+                <control type="image">
+                    <top>5</top>
+                    <left>5</left>
+                    <right>5</right>
+                    <bottom>11</bottom>
+                    <info>ListItem.Icon</info>
+                    <aspectratio align="left" aligny="top">stretch</aspectratio>
+                </control>
+            </focusedlayout>
+        </control>
+        <control type="list" id="303">
+            <top>20</top>
+            <bottom>10</bottom>
+            <left>10</left>
+            <right>45</right>
+            <focusposition>1</focusposition>
+            <pagecontrol>304</pagecontrol>
+            <itemlayout width="725" height="88">
+                <control type="image">
+                    <height>82</height>
+                    <texture>menu-nofocus.png</texture>
+                    <bordersize>5</bordersize>
+                    <bordertexture>main-header.jpg</bordertexture>
+                </control>
+                <control type="image">
+                    <top>5</top>
+                    <left>5</left>
+                    <width>71</width>
+                    <height>71</height>
+                    <info>ListItem.Icon</info>
+                    <aspectratio>scale</aspectratio>
+                </control>
+                <control type="label">
+                    <left>111</left>
+                    <height>82</height>
+                    <font>font8</font>
+                    <textcolor>FFFFFFFF</textcolor>
+                    <align>left</align>
+                    <aligny>center</aligny>
+                    <info>ListItem.Label</info>
+                </control>
+            </itemlayout>
+            <focusedlayout width="725" height="88">
+                <control type="image">
+                    <height>82</height>
+                    <texture>main-header.jpg</texture>
+                    <bordersize>5</bordersize>
+                    <bordertexture>white.png</bordertexture>
+                </control>
+                <control type="image">
+                    <top>5</top>
+                    <left>5</left>
+                    <width>71</width>
+                    <height>71</height>
+                    <info>ListItem.Icon</info>
+                    <aspectratio>scale</aspectratio>
+                </control>
+                <control type="label">
+                    <left>111</left>
+                    <height>82</height>
+                    <font>font8</font>
+                    <textcolor>FFFFFFFF</textcolor>
+                    <align>left</align>
+                    <aligny>center</aligny>
+                    <info>ListItem.Label</info>
+                </control>
+            </focusedlayout>
+        </control>
+        <control type="image">
+            <left>0</left>
+            <right>0</right>
+            <top>630</top>
+            <height>20</height>
+            <texture>main-background.jpg</texture>
+        </control>
+        <control type="scrollbar" id="304">
+            <description>Scroll bar control</description>
+            <right>20</right>
+            <top>20</top>
+            <width>15</width>
+            <bottom>19</bottom>
+            <texturesliderbackground>menu-nofocus.png</texturesliderbackground>
+            <texturesliderbar>scrollbar-nib.png</texturesliderbar>
+            <texturesliderbarfocus>white.png</texturesliderbarfocus>
+            <onup>1</onup>
+            <ondown>1</ondown>
+        </control>
+
+      </control>
+      <control type="group" id="400">
+        <top>71</top>
+        <bottom>0</bottom>
+        <left>0</left>
+        <right>0</right>
+        <control type="image">
+            <top>0</top>
+            <bottom>0</bottom>
+            <left>0</left>
+            <right>0</right>
+            <colordiffuse>88ffffff</colordiffuse>
+            <texture>main-background.jpg</texture>
+        </control>
+        <control type="image">
+            <top>250</top>
+            <bottom>250</bottom>
+            <left>540</left>
+            <right>540</right>
+            <bordersize>3</bordersize>
+            <bordertexture>white.png</bordertexture>
+            <texture>main-header.jpg</texture>
+        </control>
+        <control type="label">
+            <top>300</top>
+            <bottom>250</bottom>
+            <left>540</left>
+            <right>540</right>
+            <font>font8</font>
+            <textcolor>FFFFFFFF</textcolor>
+            <align>center</align>
+            <aligny>center</aligny>
+            <label>Cargando...</label>
+        </control>
+        <control type="image">
+              <left>620</left>
+              <top>284</top>
+              <width>40</width>
+              <height>40</height>
+              <texture>loader.gif</texture>  
+        </control>
+      </control>
+      <control type="group" id="500">
+          <height>71</height>
+          <width>400</width>
+          <right>45</right>
+          <control type="image">
+              <texture>main-background.jpg</texture>
+          </control> 
+          <control type="image">
+            <left>2</left>
+            <top>2</top>
+            <right>2</right>
+            <bottom>2</bottom>
+             <texture>info-background.jpg</texture>
+          </control> 
+          <control type="label" id="501">
+            <left>6</left>
+            <top>6</top>
+            <right>6</right>
+            <height>10</height>
+            <font>font10</font>
+            <textcolor>FFCCCCCC</textcolor>
+            <align>left</align>
+            <aligny>center</aligny>
+            <label></label>
+          </control>
+          <control type="label" id="502">
+            <left>6</left>
+            <top>26</top>
+            <right>6</right>
+            <height>10</height>
+            <font>font10</font>
+            <textcolor>FFCCCCCC</textcolor>
+            <align>left</align>
+            <aligny>center</aligny>
+            <wrapmultiline>true</wrapmultiline>
+            <label></label>
+          </control>
+          <control type="image" id="503">
+              <left>6</left>
+              <right>6</right>
+              <top>53</top>
+              <height>12</height>
+              <texture>main-header.jpg</texture>
+          </control>
+          <control type="image" id="504">
+              <left>8</left>
+              <top>55</top>
+              <width>20</width>
+              <height>8</height>
+              <texture>main-background.jpg</texture>
+          </control>
+                 
+        </control>
+    </controls>
+</window>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+    <defaultcontrol>121</defaultcontrol>
+    <allowoverlays>false</allowoverlays>  
+    <controls>
+      <control type="group" id="1">
+        <centerleft>640</centerleft>
+        <centertop>360</centertop>
+        <width>500</width>
+        <height>170</height>
+        <defaultcontrol>11</defaultcontrol>
+        <control type="image">
+            <texture>main-header.jpg</texture>
+        </control>
+        <control type="button" id="11">
+              <right>5</right>
+              <top>5</top>
+              <width>20</width>
+              <height>20</height>
+              <texturefocus>closefocus.png</texturefocus>
+              <texturenofocus>close.png</texturenofocus>
+              <aspectratio align="left" aligny="top">scale</aspectratio>    
+        </control>
+        <control type="label" id="12">
+            <height>30</height>
+            <right>30</right>
+            <left>5</left>
+            <font>font10</font>
+            <textcolor>FFFFFFFF</textcolor>
+            <align>center</align>
+            <aligny>center</aligny>
+            <label></label>
+        </control>
+        <control type="group" id="13">
+          <top>30</top>
+          <right>3</right>
+          <left>3</left>
+          <bottom>3</bottom>
+          <defaultcontrol>131</defaultcontrol>
+          <control type="image">
+            <texture>main-background.jpg</texture>
+          </control>
+          <control type="label" id="131">
+            <left>10</left>
+            <top>10</top>
+            <height>100</height>
+            <align>left</align>
+            <aligny>top</aligny>
+            <font>font12</font>
+            <wrapmultiline>true</wrapmultiline>
+            <autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
+          </control>
+          <control type="button" id="132">
+                <bottom>10</bottom>
+                <width>130</width>
+                <height>30</height>
+                <centerleft>250</centerleft>
+                <texturefocus>buttonfocus.png</texturefocus>
+                <texturenofocus>button.png</texturenofocus>
+                <label>Aceptar</label>
+                <font>font8</font>
+                <textcolor>FFFFFFFF</textcolor>
+                <focusedcolor>FFFFFFFF</focusedcolor>
+                <align>center</align>
+                <aligny>center</aligny>      
+          </control>
+        </control>
+      </control>
+    </controls>
+</window>
