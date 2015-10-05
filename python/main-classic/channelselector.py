@@ -3,13 +3,6 @@
 # pelisalacarta - XBMC Plugin
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
-
-#Propiedades del Canal:
-__version__ = 8
-__adult__ = False
-__date__ = "28/07/2013"
-__changes__ = "Actualizado por cambio en el canal"
-
 import os
 import sys
 from core import config
@@ -76,7 +69,7 @@ def listchannels(item):
     folderchannels =  []
     disabledchannels =  []
     channelslist =[]
-    hiddenchannels = ["__init__.py","ayuda.py", "buscador.py"]
+    hiddenchannels = ["__init__.py","ayuda.py", "buscador.py","novedades.py"]
     
     for channel in os.listdir(os.path.join(config.get_runtime_path(),"channels")):
       if channel.endswith(".py") and not channel in  hiddenchannels:
