@@ -36,7 +36,7 @@ def Check():
   progress.Actualizar(25, "Descargando lista de Servidores...")
   RemoteJSONData = json.loads(scrapertools.cache_page(GitApi + "servers", headers=headers))
   LocalJSONData = json.loads(open(ServersIndexPath,"r").read())
-  #open(ServersIndexPath.replace(".json","-remote.json"),"w").write(json.dumps(LocalJSONData, indent=4, sort_keys=True))
+  open(ServersIndexPath.replace(".json","-remote.json"),"w").write(json.dumps(RemoteJSONData, indent=4, sort_keys=True))
   if RemoteJSONData <> LocalJSONData:
     for Server in RemoteJSONData:
       if not Server in LocalJSONData:
@@ -46,11 +46,12 @@ def Check():
   progress.Actualizar(50, "Descargando lista de Canales...")
   RemoteJSONData = json.loads(scrapertools.cache_page(GitApi + "channels", headers=headers))
   LocalJSONData = json.loads(open(ChannelsIndexPath,"r").read())
-  #open(ChannelsIndexPath.replace(".json","-remote.json"),"w").write(json.dumps(LocalJSONData, indent=4, sort_keys=True))
+  open(ChannelsIndexPath.replace(".json","-remote.json"),"w").write(json.dumps(RemoteJSONData, indent=4, sort_keys=True))
   progress.Actualizar(75, "Comprobando...")
   if RemoteJSONData <> LocalJSONData:
     for Channel in RemoteJSONData:
       if not Channel in LocalJSONData:
+        logger.info(Channel)
         DownloadChannels.append(Channel)
                
   if DownloadServers or DownloadChannels:    
@@ -58,11 +59,11 @@ def Check():
     for File in  DownloadServers:   
       Progreso = DownloadServers.index(File) * 100 / (len(DownloadServers) + len(DownloadChannels))
       progress.Actualizar(Progreso ,'Actualizando Archivo: "' + File["name"] + '"')
-      open(os.path.join(config.get_runtime_path(), "servers", File["name"]),"wb").write(scrapertools.cachePage(File["download_url"]))
+      open(os.path.join(config.get_runtime_path(), "servers", File["name"]),"wb").write(scrapertools.downloadpage(File["download_url"]))
     for File in  DownloadChannels:   
       Progreso = (DownloadChannels.index(File) + len(DownloadServers)  ) * 100 / (len(DownloadServers) + len(DownloadChannels))
       progress.Actualizar(Progreso ,'Actualizando Archivo: "' + File["name"] + '"')
-      open(os.path.join(config.get_runtime_path(), "channels", File["name"]),"wb").write(scrapertools.cachePage(File["download_url"]))
+      open(os.path.join(config.get_runtime_path(), "channels", File["name"]),"wb").write(scrapertools.downloadpage(File["download_url"]))
       
     CreateIndex(ServersIndexPath,"servers")
     CreateIndex(ChannelsIndexPath,"channels")
