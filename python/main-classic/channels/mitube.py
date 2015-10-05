@@ -5,6 +5,21 @@
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
 
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "A"
+__changes__ = ""
+__channel__ = "mitube"
+__creationdate__ = 20111014
+__date__ = ""
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Mitube"
+__type__ = "generic"
+__version__ = 0
+
+
 import urlparse,urllib2,urllib,re
 import os, sys,json,time
 from lib import pafy
@@ -28,13 +43,6 @@ from core.item import Item
 from servers import servertools
 
 DEBUG = config.get_setting("debug")
-
-__category__ = "A"
-__type__ = "generic"
-__title__ = "mitube"
-__channel__ = "mitube"
-__language__ = "ES"
-__creationdate__ = "20111014"
 
 ANIMEFLV_REQUEST_HEADERS = []
 ANIMEFLV_REQUEST_HEADERS.append(["User-Agent","Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:22.0) Gecko/20100101 Firefox/22.0"])

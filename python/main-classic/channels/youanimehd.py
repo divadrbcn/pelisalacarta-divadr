@@ -5,6 +5,21 @@
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
 
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "A"
+__changes__ = ""
+__channel__ = "youanimehd"
+__creationdate__ = 130202
+__date__ = ""
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "YouAnime HD"
+__type__ = "generic"
+__version__ = 0
+
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -16,13 +31,6 @@ from servers import servertools
 
 DEBUG = config.get_setting("debug")
 USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:20.0) Gecko/20100101 Firefox/20.0"
-
-__category__ = "A"
-__type__ = "generic"
-__title__ = "YouAnimeHd"
-__channel__ = "youanimehd"
-__language__ = "ES"
-__creationdate__ = "130202"
 
 def isGeneric():
     return True

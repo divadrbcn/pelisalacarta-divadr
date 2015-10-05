@@ -4,6 +4,21 @@
 # Canal para filesmonster.com
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = True
+__category__ = "X,F"
+__changes__ = ""
+__channel__ = "filesmonster_catalogue"
+__creationdate__ = ""
+__date__ = ""
+__language__ = "es"
+__thumbnail__ = ""
+__title__ = "Filesmonster Catalogue"
+__type__ = "generic"
+__version__ = 0
+
 import urlparse,urllib2,urllib,re
 import os,sys
 
@@ -14,12 +29,6 @@ from core.item import Item
 from servers import servertools
 
 #from pelisalacarta import buscador
-
-__channel__ = "filesmonster_catalogue"
-__category__ = "D"
-__type__ = "generic"
-__title__ = "filesmonster_catalogue"
-__language__ = "ES"
 
 DEBUG = config.get_setting("debug")
 

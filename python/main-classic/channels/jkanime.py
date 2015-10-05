@@ -5,6 +5,21 @@
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
 
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "A"
+__changes__ = "Arreglado fallo al buscar los episodios"
+__channel__ = "jkanime"
+__creationdate__ = 20121015
+__date__ = "16/10/2011"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "JKanime"
+__type__ = "generic"
+__version__ = 2
+
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -15,13 +30,6 @@ from core.item import Item
 from servers import servertools
 
 DEBUG = config.get_setting("debug")
-
-__category__ = "A"
-__type__ = "generic"
-__title__ = "JKanime"
-__channel__ = "jkanime"
-__language__ = "ES"
-__creationdate__ = "20121015"
 
 def isGeneric():
     return True

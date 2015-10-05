@@ -5,6 +5,21 @@
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
 
+#Propiedades del Canal:
+__active__ = True
+__adult__ = True
+__category__ = "X,A"
+__changes__ = ""
+__channel__ = "hentaiflv"
+__creationdate__ = 20140414
+__date__ = ""
+__language__ = "es"
+__thumbnail__ = ""
+__title__ = "Hentai FLV"
+__type__ = "generic"
+__version__ = 0
+
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -15,13 +30,6 @@ from core.item import Item
 from servers import servertools
 
 DEBUG = config.get_setting("debug")
-
-__category__ = "A,X"
-__type__ = "generic"
-__title__ = "Hentaiflv"
-__channel__ = "hentaiflv"
-__language__ = "ES"
-__creationdate__ = "20140414"
 
 HENTAIFLV_REQUEST_HEADERS = []
 HENTAIFLV_REQUEST_HEADERS.append(["User-Agent","Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:22.0) Gecko/20100101 Firefox/22.0"])

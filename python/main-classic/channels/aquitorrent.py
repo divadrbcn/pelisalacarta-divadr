@@ -3,6 +3,21 @@
 # pelisalacarta - XBMC Plugin
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "T,F,S,D,A,VOS"
+__changes__ = "First pelisalacarta 4 release"
+__channel__ = "aquitorrent"
+__creationdate__ = ""
+__date__ = "28/08/2015"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Aquitorrent"
+__type__ = "generic"
+__version__ = 1
+
 import urlparse,urllib2,urllib,re
 import os, sys, random
 
@@ -11,12 +26,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "aquitorrent"
-__category__ = "F"
-__type__ = "generic"
-__title__ = "Aquitorrent"
-__language__ = "ES"
 
 host = "http://www.aquitorrent.com/"
 

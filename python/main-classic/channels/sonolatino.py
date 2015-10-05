@@ -4,6 +4,21 @@
 # Canal para sonolatino.com
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = False
+__adult__ = False
+__category__ = "M"
+__changes__ = ""
+__channel__ = "sonolatino"
+__creationdate__ = ""
+__date__ = ""
+__language__ = " "
+__thumbnail__ = ""
+__title__ = "Sonolatino"
+__type__ = "xbmc"
+__version__ = 0
+
 import urlparse,urllib2,urllib,re
 import os
 import sys
@@ -20,12 +35,6 @@ from platformcode import xbmctools
 from core.item import Item
 from servers import servertools
 from servers import vk
-
-__channel__ = "sonolatino"
-__category__ = "M"
-__type__ = "xbmc"
-__title__ = "Sonolatino"
-__language__ = ""
 
 DEBUG = config.get_setting("debug")
 

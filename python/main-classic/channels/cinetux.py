@@ -4,6 +4,21 @@
 # Canal para cinetux
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "L,F"
+__changes__ = "Añadida la funcion Buscar"
+__channel__ = "cinetux"
+__creationdate__ = ""
+__date__ = "16/02/2015"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Cinetux"
+__type__ = "generic"
+__version__ = 3
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -12,12 +27,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "cinetux"
-__category__ = "F"
-__type__ = "generic"
-__title__ = "Cinetux"
-__language__ = "ES"
 
 DEBUG = config.get_setting("debug")
 

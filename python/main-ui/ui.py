@@ -187,7 +187,6 @@ class SelectWindow(xbmcgui.WindowXMLDialog):
       pass
       
     def onClick( self, control_id ):
-      logger.info(control_id)
       if control_id == 10042:
         self.result = self.getControl(10042).getSelectedPosition()
         self.close()
@@ -207,11 +206,13 @@ class MainWindow(xbmcgui.WindowXML):
         self.timeload = 0
         self.item = Item(channel="channelselector", action="mainlist")
         self.itemlist = navigation.NextItem(self.item)
+        self.control_list = None
         self.doModal()
 
     def onInit(self):
         self.getControl(500).setVisible(False)
-        self.AddItems()
+        if self.control_list == None:
+          self.AddItems()
         
     def AddItems(self):
         self.getControl(301).setVisible(False)

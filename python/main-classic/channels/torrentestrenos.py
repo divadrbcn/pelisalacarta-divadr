@@ -5,6 +5,21 @@
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
 
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "T,F,S,D"
+__changes__ = ""
+__channel__ = "torrentestrenos"
+__creationdate__ = ""
+__date__ = ""
+__language__ = "ES"
+__thumbnail__ = "http://s6.postimg.org/lq96iccb5/torrentestrenos.jpg"
+__title__ = "Torrentestrenos"
+__type__ = "generic"
+__version__ = 0
+
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -13,12 +28,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__category__ = "A"
-__type__ = "generic"
-__title__ = "Torrentestrenos"
-__channel__ = "torrentestrenos"
-__language__ = "ES"
 
 host = "http://www.torrentestrenos.com"
 

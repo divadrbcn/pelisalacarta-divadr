@@ -5,6 +5,21 @@
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
 
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "F"
+__changes__ = ""
+__channel__ = "ecarteleratrailers"
+__creationdate__ = ""
+__date__ = ""
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Trailers ecartelera"
+__type__ = "generic"
+__version__ = 0
+
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -15,12 +30,6 @@ from core.item import Item
 from servers import servertools
 
 DEBUG = config.get_setting("debug")
-
-__channel__ = "ecarteleratrailers"
-__category__ = "F"
-__type__ = "generic"
-__title__ = "Trailers ecartelera"
-__language__ = "ES,EN"
 
 def isGeneric():
     return True

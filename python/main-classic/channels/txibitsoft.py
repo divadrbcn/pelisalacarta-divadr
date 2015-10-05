@@ -5,6 +5,21 @@
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
 
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "T,S,F"
+__changes__ = "Córreción cambios web"
+__channel__ = "txibitsoft"
+__creationdate__ = ""
+__date__ = "22/06/2015"
+__language__ = "ES"
+__thumbnail__ = "http://s27.postimg.org/hx5ohryxf/tblogo.jpg"
+__title__ = "Txibitsoft"
+__type__ = "generic"
+__version__ = 5
+
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -16,12 +31,6 @@ from core.item import Item
 from servers import servertools
 
 import xbmcgui
-
-__category__ = "A"
-__type__ = "generic"
-__title__ = "Txibitsoft"
-__channel__ = "txibitsoft"
-__language__ = "ES"
 
 host = "http://www.txibitsoft.com/"
 

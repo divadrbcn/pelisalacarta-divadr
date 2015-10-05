@@ -5,6 +5,21 @@
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 # contribuci?n de jurrabi
 #----------------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = False
+__adult__ = False
+__category__ = "F"
+__changes__ = "First pelisalacarta 4 release"
+__channel__ = "ayuda"
+__creationdate__ = ""
+__date__ = "28/08/2015"
+__language__ = "es"
+__thumbnail__ = ""
+__title__ = "Ayuda"
+__type__ = "generic"
+__version__ = 1
+
 import re
 from core import scrapertools
 from core import config

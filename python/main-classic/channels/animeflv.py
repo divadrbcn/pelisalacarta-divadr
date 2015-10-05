@@ -4,6 +4,21 @@
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 # ------------------------------------------------------------
 
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "A"
+__changes__ = "Fix PEP 8 convention"
+__channel__ = "animeflv"
+__creationdate__ = ""
+__date__ = "06/09/2015"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Animeflv"
+__type__ = "generic"
+__version__ = 2
+
+
 import urlparse
 import re
 import sys
@@ -15,12 +30,6 @@ from core.item import Item
 from servers import servertools
 
 DEBUG = config.get_setting("debug")
-
-__category__ = "A"
-__type__ = "generic"
-__title__ = "Animeflv"
-__channel__ = "animeflv"
-__language__ = "ES"
 
 host = "http://animeflv.net/"
 

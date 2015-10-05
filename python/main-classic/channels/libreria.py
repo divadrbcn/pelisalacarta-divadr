@@ -4,6 +4,20 @@
 # Canal para Libreria XBMC
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = False
+__adult__ = False
+__category__ = "F"
+__changes__ = ""
+__creationdate__ = ""
+__date__ = ""
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Sin Titulo"
+__type__ = "generic"
+__version__ = 0
+
 import urlparse,urllib2,urllib,re
 import os, sys
 

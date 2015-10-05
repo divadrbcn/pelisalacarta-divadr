@@ -4,6 +4,21 @@
 # Canal para Shurweb
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "F,S,D,A"
+__changes__ = "Corregido para funcionar con el nuevo dominio"
+__channel__ = "shurweb"
+__creationdate__ = ""
+__date__ = "16/02/2014"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Shurweb"
+__type__ = "generic"
+__version__ = 6
+
 import urlparse,urllib2,urllib,re
 import os,sys
 
@@ -12,12 +27,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "shurweb"
-__category__ = "F,S,D,A"
-__type__ = "generic"
-__title__ = "Shurweb"
-__language__ = "ES"
 
 DEBUG = config.get_setting("debug")
 

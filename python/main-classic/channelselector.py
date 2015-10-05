@@ -34,7 +34,7 @@ def mainlist(item,preferred_thumb=""):
     itemlist.append( Item(title=config.get_localized_string(30131) , channel="biblioteca" , action="mainlist", thumbnail = "%sthumb_biblioteca.png") )
     itemlist.append( Item(title=config.get_localized_string(30101) , channel="descargas" , action="mainlist", thumbnail = "%sthumb_descargas.png") )
     itemlist.append( Item(title=config.get_localized_string(30100) , channel="configuracion" , action="mainlist", thumbnail = "%sthumb_configuracion.png", folder=False) )
-    if config.get_platform()!="rss": itemlist.append( Item(title=config.get_localized_string(30104) , channel="ayuda" , action="mainlist", thumbnail = "%sthumb_ayuda.png") )
+    if config.PLATFORM_NAME!="rss": itemlist.append( Item(title=config.get_localized_string(30104) , channel="ayuda" , action="mainlist", thumbnail = "%sthumb_ayuda.png") )
     return itemlist
 
 

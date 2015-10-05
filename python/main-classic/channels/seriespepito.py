@@ -4,6 +4,21 @@
 # Canal para seriespepito
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = False
+__adult__ = False
+__category__ = "S"
+__changes__ = "Arreglado el problema al elegir el vídeo (gracias a chopchop de nuevo)"
+__channel__ = "seriespepito"
+__creationdate__ = ""
+__date__ = "30/05/2014"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Seriespepito"
+__type__ = "generic"
+__version__ = 12
+
 import urlparse,urllib2,urllib,re
 import os, sys
 import hashlib
@@ -13,12 +28,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "seriespepito"
-__category__ = "S"
-__type__ = "generic"
-__title__ = "Seriespepito"
-__language__ = "ES"
 
 DEBUG = config.get_setting("debug")
 

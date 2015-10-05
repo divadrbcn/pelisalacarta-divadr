@@ -4,6 +4,21 @@
 # Canal para series.ly
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "F,S,A,VOS"
+__changes__ = "Corrige el que no se pueda acceder a algunas webs (gracias a prunk)"
+__channel__ = "seriesly"
+__creationdate__ = 20111119
+__date__ = "12/10/2014"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Series.ly"
+__type__ = "generic"
+__version__ = 31
+
 import re
 import sys 
 import os
@@ -30,13 +45,6 @@ except:
 
 
 
-
-__channel__ = "seriesly"
-__category__ = "F,S,A,D"
-__type__ = "generic"
-__title__ = "Series.ly"
-__language__ = "ES"
-__creationdate__ = "20111119"
 
 DEBUG = config.get_setting("debug")
 

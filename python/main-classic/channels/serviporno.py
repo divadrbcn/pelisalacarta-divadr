@@ -4,6 +4,21 @@
 # Canal para serviporno
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = True
+__category__ = "X,F"
+__changes__ = "Version inicial"
+__channel__ = "serviporno"
+__creationdate__ = ""
+__date__ = "16/02/2015"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Serviporno"
+__type__ = "generic"
+__version__ = 1
+
 import urlparse,urllib2,urllib,re
 import os
 import sys
@@ -13,13 +28,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "serviporno"
-__category__ = "F"
-__type__ = "generic"
-__title__ = "serviporno"
-__language__ = "ES"
-__adult__ = "true"
 
 DEBUG = config.get_setting("debug")
 

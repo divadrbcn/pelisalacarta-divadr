@@ -4,6 +4,21 @@
 # Canal para ver un vídeo conociendo su URL
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "G"
+__changes__ = "Ya puedes poner una url cualquiera!"
+__channel__ = "tengourl"
+__creationdate__ = ""
+__date__ = "22/02/2012"
+__language__ = " "
+__thumbnail__ = ""
+__title__ = "Tengo una URL"
+__type__ = "generic"
+__version__ = 1
+
 import urlparse,urllib2,urllib,re
 import os
 import sys
@@ -13,12 +28,6 @@ from core import config
 from core import logger
 from core.item import Item
 from servers import servertools
-
-__channel__ = "tengourl"
-__category__ = "G"
-__type__ = "generic"
-__title__ = "tengourl"
-__language__ = ""
 
 DEBUG = config.get_setting("debug")
 

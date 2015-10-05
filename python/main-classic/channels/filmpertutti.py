@@ -4,6 +4,21 @@
 # Canal para piratestreaming
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "F,S,A"
+__changes__ = "Actualizado"
+__channel__ = "filmpertutti"
+__creationdate__ = ""
+__date__ = "17/03/2015"
+__language__ = "IT"
+__thumbnail__ = ""
+__title__ = "Film per tutti (IT)"
+__type__ = "generic"
+__version__ = 3
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -12,12 +27,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "filmpertutti"
-__category__ = "F"
-__type__ = "generic"
-__title__ = "filmpertutti"
-__language__ = "IT"
 
 DEBUG = config.get_setting("debug")
 

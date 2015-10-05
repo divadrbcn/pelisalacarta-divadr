@@ -4,6 +4,21 @@
 # Canal para tumejortv
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = False
+__adult__ = False
+__category__ = "F,S"
+__changes__ = "Mejorado proceso de obtención de enlaces"
+__channel__ = "tumejortv"
+__creationdate__ = ""
+__date__ = "05/06/2013"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "tumejortv.com"
+__type__ = "generic"
+__version__ = 8
+
 import urlparse,urllib2,urllib,re
 
 from core import logger
@@ -11,12 +26,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "tumejortv"
-__category__ = "F,S"
-__type__ = "generic"
-__title__ = "tumejortv.com"
-__language__ = "ES"
 
 DEBUG = config.get_setting("debug")
 

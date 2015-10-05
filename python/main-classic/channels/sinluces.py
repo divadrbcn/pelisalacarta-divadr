@@ -4,6 +4,21 @@
 # Canal para sinluces
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "F"
+__changes__ = "Sinluces; Nuevo formato web"
+__channel__ = "sinluces"
+__creationdate__ = ""
+__date__ = "25/09/2015"
+__language__ = "ES"
+__thumbnail__ = "http://s14.postimg.org/cszkmr7a9/sinluceslogo.jpg"
+__title__ = "Sinluces"
+__type__ = "generic"
+__version__ = 2
+
 import urlparse,urllib2,urllib,re
 import os,sys
 
@@ -17,12 +32,6 @@ try:
     import xbmc
     import xbmcgui
 except: pass
-
-__channel__ = "sinluces"
-__category__ = "F,S,D"
-__type__ = "generic"
-__title__ = "Sinluces"
-__language__ = "ES"
 
 DEBUG = config.get_setting("debug")
 

@@ -4,6 +4,21 @@
 # Canal para italiafilm
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "A"
+__changes__ = "Actualizado"
+__channel__ = "italiafilm"
+__creationdate__ = ""
+__date__ = "17/03/2015"
+__language__ = "IT"
+__thumbnail__ = ""
+__title__ = "ItaliaFilms.tv (IT)"
+__type__ = "generic"
+__version__ = 4
+
 import urlparse,urllib2,urllib,re
 import os,sys
  
@@ -12,12 +27,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "italiafilm"
-__category__ = "F,S,A"
-__type__ = "generic"
-__title__ = "Italia film (IT)"
-__language__ = "IT"
 
 DEBUG = True #config.get_setting("debug")
 EVIDENCE = "   "

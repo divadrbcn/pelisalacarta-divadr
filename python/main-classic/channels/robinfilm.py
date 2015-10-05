@@ -4,6 +4,21 @@
 # Canal para robinfilm
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "F"
+__changes__ = "fixed"
+__channel__ = "robinfilm"
+__creationdate__ = 20110516
+__date__ = "17/05/2012"
+__language__ = "IT"
+__thumbnail__ = ""
+__title__ = "Robinfilm (IT)"
+__type__ = "generic"
+__version__ = 3
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -12,13 +27,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "robinfilm"
-__category__ = "F"
-__type__ = "generic"
-__title__ = "Robinfilm (IT)"
-__language__ = "IT"
-__creationdate__ = "20110516"
 
 DEBUG = config.get_setting("debug")
 

@@ -4,6 +4,21 @@
 # Canal para unsoloclic
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "F,S"
+__changes__ = "Primera version"
+__channel__ = "unsoloclic"
+__creationdate__ = 20120703
+__date__ = "25/08/2013"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Unsoloclic"
+__type__ = "generic"
+__version__ = 2
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -12,13 +27,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "unsoloclic"
-__category__ = "F,S"
-__type__ = "generic"
-__title__ = "Unsoloclic.info"
-__language__ = "ES"
-__creationdate__ = "20120703"
 
 DEBUG = config.get_setting("debug")
 

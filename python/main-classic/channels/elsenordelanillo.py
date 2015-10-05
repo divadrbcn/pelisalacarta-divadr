@@ -5,6 +5,21 @@
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
 
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "L,F"
+__changes__ = ""
+__channel__ = "elsenordelanillo"
+__creationdate__ = 20140615
+__date__ = ""
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "El señor del anillo"
+__type__ = "xbmc"
+__version__ = 0
+
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -16,13 +31,6 @@ from core.item import Item
 from servers import servertools
 
 DEBUG = config.get_setting("debug")
-
-__category__ = "A"
-__type__ = "generic"
-__title__ = "elsenordelanillo"
-__channel__ = "elsenordelanillo"
-__language__ = "ES"
-__creationdate__ = "20140615"
 
 def isGeneric():
     return True

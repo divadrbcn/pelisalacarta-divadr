@@ -4,6 +4,21 @@
 # Canal para animeid
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "A"
+__changes__ = "First pelisalacarta 4 release"
+__channel__ = "animeid"
+__creationdate__ = ""
+__date__ = "28/08/2015"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Animeid"
+__type__ = "generic"
+__version__ = 1
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -14,12 +29,6 @@ from core.item import Item
 from servers import servertools
 
 DEBUG = config.get_setting("debug")
-
-__category__ = "A"
-__type__ = "generic"
-__title__ = "Animeid"
-__channel__ = "animeid"
-__language__ = "ES"
 
 def isGeneric():
     return True

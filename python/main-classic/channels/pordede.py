@@ -5,6 +5,21 @@
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
 
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "F,S"
+__changes__ = "Arreglo de siguientes capítulos"
+__channel__ = "pordede"
+__creationdate__ = 20140615
+__date__ = "22/04/2015"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Pordede"
+__type__ = "generic"
+__version__ = 6
+
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -16,13 +31,6 @@ from core.item import Item
 from servers import servertools
 
 DEBUG = config.get_setting("debug")
-
-__category__ = "A"
-__type__ = "generic"
-__title__ = "Pordede"
-__channel__ = "pordede"
-__language__ = "ES"
-__creationdate__ = "20140615"
 
 DEFAULT_HEADERS = []
 DEFAULT_HEADERS.append( ["User-Agent","Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; es-ES; rv:1.9.2.12) Gecko/20101026 Firefox/3.6.12"] )

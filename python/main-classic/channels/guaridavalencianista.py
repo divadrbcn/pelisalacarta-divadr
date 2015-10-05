@@ -4,6 +4,21 @@
 # Canal para guaridavalencianista
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "D"
+__changes__ = ""
+__channel__ = "guaridavalencianista"
+__creationdate__ = ""
+__date__ = ""
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "La Guarida valencianista"
+__type__ = "generic"
+__version__ = 0
+
 import urlparse,urllib2,urllib,re
 import os
 import sys
@@ -14,12 +29,6 @@ from core import logger
 from core.item import Item
 from servers import servertools
 #from pelisalacarta import buscador
-
-__channel__ = "guaridavalencianista"
-__category__ = "D"
-__type__ = "generic"
-__title__ = "guaridavalencianista"
-__language__ = "ES"
 
 DEBUG = config.get_setting("debug")
 

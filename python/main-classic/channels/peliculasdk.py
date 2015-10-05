@@ -4,6 +4,21 @@
 # Canal para peliculasdk
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "F"
+__changes__ = "peliculasdk: correccion por cambios  themoviedb"
+__channel__ = "peliculasdk"
+__creationdate__ = ""
+__date__ = "16/06/2015"
+__language__ = "ES"
+__thumbnail__ = "http://s29.postimg.org/wzw749oon/pldklog.jpg"
+__title__ = "PeliculasDK"
+__type__ = "generic"
+__version__ = 2
+
 import urlparse,urllib2,urllib,re
 import os,sys
 
@@ -17,12 +32,6 @@ try:
     import xbmc
     import xbmcgui
 except: pass
-
-__channel__ = "peliculasdk"
-__category__ = "F,S,D"
-__type__ = "generic"
-__title__ = "PeliculasDK"
-__language__ = "ES"
 
 DEBUG = config.get_setting("debug")
 

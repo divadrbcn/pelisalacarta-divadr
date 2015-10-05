@@ -4,6 +4,21 @@
 # Canal para discoverymx
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "L,D"
+__changes__ = "Mejorada extracción de patrones"
+__channel__ = "discoverymx"
+__creationdate__ = ""
+__date__ = "11/06/2012"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Discoverymx"
+__type__ = "generic"
+__version__ = 2
+
 import urlparse,urllib2,urllib,re
 import os
 import sys
@@ -14,12 +29,6 @@ from core import logger
 from core.item import Item
 from servers import servertools
 #from pelisalacarta import buscador
-
-__channel__ = "discoverymx"
-__category__ = "D"
-__type__ = "generic"
-__title__ = "Discoverymx"
-__language__ = "ES"
 
 DEBUG = config.get_setting("debug")
 

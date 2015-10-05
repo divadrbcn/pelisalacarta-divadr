@@ -5,6 +5,21 @@
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 # Por aampudia
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = True
+__category__ = "X,F"
+__changes__ = "First pelisalacarta 4 release"
+__channel__ = "beeg"
+__creationdate__ = ""
+__date__ = "28/08/2015"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Beeg"
+__type__ = "generic"
+__version__ = 1
+
 import cookielib
 import urlparse,urllib2,urllib,re
 import os
@@ -16,8 +31,7 @@ from core import scrapertools
 from core.item import Item
 from servers import servertools
 
-__channel__ = "beeg"
-DEBUG = config.get_setting("debug")
+EBUG = config.get_setting("debug")
 
 def isGeneric():
     return True

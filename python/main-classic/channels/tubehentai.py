@@ -4,6 +4,21 @@
 # Canal para tubehentai
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = True
+__category__ = "X,F"
+__changes__ = ""
+__channel__ = "tubehentai"
+__creationdate__ = ""
+__date__ = ""
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "tubehentai"
+__type__ = "xbmc"
+__version__ = 0
+
 import urlparse,urllib2,urllib,re
 import os
 import sys
@@ -13,12 +28,6 @@ from core import config
 from core import logger
 from core.item import Item
 from servers import servertools
-
-__channel__ = "tubehentai"
-__category__ = "A"
-__type__ = "generic"
-__title__ = "tubehentai"
-__language__ = "ES"
 
 DEBUG = config.get_setting("debug")
 

@@ -4,6 +4,21 @@
 # Canal para gaypornshare.com
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = False
+__adult__ = False
+__category__ = "D"
+__changes__ = "Actualizado por cambios en la web (gracias a sdfasd sdf sdfas)"
+__channel__ = "gaypornshare"
+__creationdate__ = ""
+__date__ = "23/08/2013"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "gaypornshare"
+__type__ = "generic"
+__version__ = 3
+
 import urlparse,urllib2,urllib,re
 import os,sys
 
@@ -14,12 +29,6 @@ from core.item import Item
 from servers import servertools
 
 #from pelisalacarta import buscador
-
-__channel__ = "gaypornshare"
-__category__ = "D"
-__type__ = "generic"
-__title__ = "gaypornshare"
-__language__ = "ES"
 
 DEBUG = config.get_setting("debug")
 

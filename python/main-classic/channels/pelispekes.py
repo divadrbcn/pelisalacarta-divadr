@@ -4,6 +4,21 @@
 # Canal para pelispekes
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "F"
+__changes__ = "Actualizado"
+__channel__ = "pelispekes"
+__creationdate__ = ""
+__date__ = "24/08/2013"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "PelisPekes"
+__type__ = "generic"
+__version__ = 4
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -12,12 +27,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "pelispekes"
-__category__ = "F"
-__type__ = "generic"
-__title__ = "Pelis Pekes"
-__language__ = "ES"
 
 DEBUG = config.get_setting("debug")
 

@@ -13,7 +13,8 @@ import os
 import xbmcaddon
 import xbmc
 PLATFORM_NAME = "kodi-isengard"
-__settings__ = xbmcaddon.Addon(id="plugin.video."+PLUGIN_NAME)
+PLUGIN_NAME = "pelisalacarta"
+__settings__ = xbmcaddon.Addon()
 __language__ = __settings__.getLocalizedString
 
 def open_settings():
@@ -48,7 +49,7 @@ def get_data_path():
 
 # Test if all the required directories are created
 def verify_directories_created():
-    logger.info("Comprobando directorios")
+
     if not os.path.exists(get_data_path()): os.mkdir(get_data_path())
     
     config_paths = [["library_path",     "Library"],

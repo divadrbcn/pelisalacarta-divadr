@@ -6,6 +6,21 @@
 # Por Truenon y Jesus, modificada por Boludiko
 # v11
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "S,A,VOS"
+__changes__ = "Uso del dominio sx"
+__channel__ = "seriesyonkis"
+__creationdate__ = ""
+__date__ = "20/04/2014"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Seriesyonkis"
+__type__ = "generic"
+__version__ = 26
+
 import urlparse,urllib2,urllib,re
 
 from core import logger
@@ -13,12 +28,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "seriesyonkis"
-__category__ = "S,A"
-__type__ = "generic"
-__title__ = "Seriesyonkis"
-__language__ = "ES"
 
 DEBUG = config.get_setting("debug")
 

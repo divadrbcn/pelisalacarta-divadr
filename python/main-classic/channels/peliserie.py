@@ -5,6 +5,21 @@
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
 
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "F,S"
+__changes__ = "Corregido bug syntax error en TMDB"
+__channel__ = "peliserie"
+__creationdate__ = 20150312
+__date__ = "18/03/2015"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Peliserie"
+__type__ = "generic"
+__version__ = 3
+
+
 import urlparse,urllib2,urllib,re
 import os, sys, random
 
@@ -15,16 +30,6 @@ from core.item import Item
 from servers import servertools
 
 DEBUG = config.get_setting("debug")
-__adult__= "false"
-__category__ = "F,S"
-__type__ = "generic"
-__title__ = "Peliserie"
-__channel__ = "peliserie"
-__language__ = "ES"
-__creationdate__ = "20150312"
-__thumbnail__ = "http://i.imgur.com/KfFpe4l.png"
-__url_base__="http://www.peliserie.com"
-
 def isGeneric():
     return True
 

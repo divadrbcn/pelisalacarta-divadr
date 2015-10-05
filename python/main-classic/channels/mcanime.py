@@ -4,6 +4,21 @@
 # Canal para mcanime
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = False
+__adult__ = False
+__category__ = "A"
+__changes__ = ""
+__channel__ = "mcanime"
+__creationdate__ = ""
+__date__ = ""
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "MCAnime"
+__type__ = "generic"
+__version__ = 0
+
 import urlparse,urllib2,urllib,re
 import os,sys
 
@@ -12,12 +27,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "mcanime"
-__category__ = "A"
-__type__ = "generic"
-__title__ = "MCAnime"
-__language__ = "ES"
 
 DEBUG = config.get_setting("debug")
 

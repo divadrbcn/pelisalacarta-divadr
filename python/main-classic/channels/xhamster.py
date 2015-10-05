@@ -5,6 +5,21 @@
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 # Por boludiko
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = True
+__category__ = "X,F"
+__changes__ = "Corregido"
+__channel__ = "xhamster"
+__creationdate__ = ""
+__date__ = "26/04/2015"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "xhamster"
+__type__ = "generic"
+__version__ = 5
+
 import cookielib
 import urlparse,urllib2,urllib,re
 import os
@@ -15,13 +30,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "xhamster"
-__category__ = "F"
-__type__ = "generic"
-__title__ = "xHamster"
-__language__ = "ES"
-__adult__ = "true"
 
 DEBUG = config.get_setting("debug")
 

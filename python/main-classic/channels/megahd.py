@@ -4,6 +4,21 @@
 # Canal para megahd
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "F,S,D,A"
+__changes__ = "Implementado mega-streamer.net como servidor de video"
+__channel__ = "megahd"
+__creationdate__ = ""
+__date__ = "30/07/2013"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Mega HD"
+__type__ = "generic"
+__version__ = 2
+
 import urlparse,urllib2,urllib,re
 import os
 import sys
@@ -13,13 +28,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "megahd"
-__category__ = "F"
-__type__ = "generic"
-__title__ = "Megahd"
-__language__ = "ES"
-__adult__ = "true"
 
 DEBUG = config.get_setting("debug")
 

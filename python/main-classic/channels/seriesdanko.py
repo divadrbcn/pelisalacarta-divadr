@@ -4,6 +4,21 @@
 # Canal para seriesdanko.com
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "S,VOS"
+__changes__ = "Actualizado por cambios en la web"
+__channel__ = "seriesdanko"
+__creationdate__ = ""
+__date__ = "24/07/2012"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Seriesdanko"
+__type__ = "generic"
+__version__ = 3
+
 import urlparse,urllib2,urllib,re
 import os
 
@@ -15,12 +30,6 @@ from servers import servertools
 import xbmc, xbmcgui
 
 PLUGIN_NAME = "pelisalacarta"
-
-__channel__ = "seriesdanko"
-__category__ = "S"
-__type__ = "generic"
-__title__ = "Seriesdanko"
-__language__ = "ES"
 
 DEBUG = config.get_setting("debug")
 

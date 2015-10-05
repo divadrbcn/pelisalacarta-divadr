@@ -4,6 +4,21 @@
 # Canal para cuevana
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "F"
+__changes__ = "Actualizado por cambios en el canal"
+__channel__ = "cuevana"
+__creationdate__ = ""
+__date__ = "05/05/2012"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Cuevana"
+__type__ = "generic"
+__version__ = 26
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -12,12 +27,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "cuevana"
-__category__ = "F,S"
-__type__ = "generic"
-__title__ = "Cuevana"
-__language__ = "ES"
 
 DEBUG = config.get_setting("debug")
 

@@ -34,8 +34,7 @@ LOCAL_FILE = os.path.join( ROOT_DIR , config.PLUGIN_NAME+"-" )
 try:
     # Añadida a la opcion : si plataforma xbmcdharma es "True", no debe ser con la plataforma de la xbox
     # porque seria un falso "True", ya que el xbmc en las xbox no son dharma por lo tanto no existen los addons
-    logger.info("pelisalacarta.core.updater get_platform="+config.get_platform())
-    logger.info("pelisalacarta.core.updater get_system_platform="+config.get_system_platform())
+    logger.info("pelisalacarta.core.updater get_platform="+config.PLATFORM_NAME)
     if config.get_platform()=="kodi-isengard":
         import xbmc
         REMOTE_FILE = "http://descargas.tvalacarta.info/"+config.PLUGIN_NAME+"-kodi-isengard-"

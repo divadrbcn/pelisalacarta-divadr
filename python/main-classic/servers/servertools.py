@@ -26,7 +26,7 @@ FREE_SERVERS.extend(['vureel','nosvideo','videopremium','movreel','flashx','upaf
 FREE_SERVERS.extend(['fileflyer','playedto','tunepk','powvideo','videomega','mega','vidspot','netutv','rutube'])
 FREE_SERVERS.extend(['videozed','documentary','hugefiles', 'firedrive','videott','tumitv','gamovideo'])
 FREE_SERVERS.extend(['torrent','video4you','mailru','streaminto','backin','akstream', 'speedvideo', 'junkyvideo', 'rapidvideo', 'realvid', 'cloudzilla', 'fakingstv'])
-FREE_SERVERS.extend(['meuvideos', 'cumlouder','v4y','streamable','videostoring','youwatch'])
+FREE_SERVERS.extend(['meuvideos', 'cumlouder','v4y','streamable','videostoring','youwatch', 'sprutotv','turbovideos','xvideos', 'xhamster','vporn', 'pornhub'])
 FREE_SERVERS.extend(['vodlocker','thevideome','rocvideo','vidxtreme','vidtome','vidzi','letwatch','sendvid','vkpass','cnubis','yourupload','mp4upload']) #,'vimpleru'])
 
 # Lista de TODOS los servidores que funcionan con cuenta premium individual
@@ -35,7 +35,7 @@ PREMIUM_SERVERS = ['uploadedto','nowvideo','onefichier']
 # Lista de TODOS los servidores soportados por Filenium
 #FILENIUM_SERVERS = jsontools.load_json(urllib2.urlopen('http://filenium.com/domainsxbmc'))
 FILENIUM_SERVERS = []
-FILENIUM_SERVERS.extend(["nitroflare","lolabits","1fichier","dl","dl","mega","allmyvideos","allmyvideos","cliphunter","dailymotion","divxstage","facebook","filefactory","filepost","filesmonster","firedrive","gigasize","justin","k2s","keep2share","keep2share","letitbit","mediafire","metacafe","mitele","moevideos","netload","nowvideo","nowvideo","nowvideo","oboom","played","pornhub","rapidgator","rg","shareflare","streamcloud","turbobit","uploadable","uploaded","uploaded","ul","userporn","videoweed","vidspot","vimeo","vk","xenubox","youngpornvideos","youtube","zippyshare","lix","safelinking","linkto","2shared","4shared","hugefiles","nowdownload","nowdownload","tusfiles","uploading","uptobox"]);
+FILENIUM_SERVERS.extend(["nitroflare","lolabits","1fichier","dl","allmyvideos","cliphunter","dailymotion","divxstage","facebook","filefactory","filepost","filesmonster","firedrive","gigasize","justin","k2s","keep2share","keep2share","letitbit","mediafire","metacafe","mitele","moevideos","netload","nowvideo","nowvideo","nowvideo","oboom","played","pornhub","rapidgator","rg","shareflare","streamcloud","turbobit","uploadable","uploaded","uploaded","ul","userporn","videoweed","vidspot","vimeo","vk","xenubox","youngpornvideos","youtube","zippyshare","lix","safelinking","linkto","2shared","4shared","hugefiles","nowdownload","nowdownload","tusfiles","uploading","uptobox"]);
 
 # Lista de TODOS los servidores soportados por Real-Debrid
 REALDEBRID_SERVERS = ['one80upload','tenupload','onefichier','onehostclick','twoshared','fourfastfile','fourshared','abc','asfile','badongo','bitshare','cbscom','cloudzer','cramit','crocko','cwtv','dailymotion','dateito',
@@ -102,7 +102,6 @@ def find_video_items(item=None, data=None, channel=""):
         scrapedtitle = "Enlace encontrado en "+video[2]
         scrapedurl = video[1]
         server = video[2]
-        thumbnail = "http://media.tvalacarta.info/servers/server_"+server+".png"
         
         itemlist.append( Item(channel=item.channel, title=scrapedtitle , action="play" , server=server, page=item.page, url=scrapedurl, thumbnail=thumbnail, show=item.show , plot=item.plot , folder=False) )
 
@@ -116,18 +115,22 @@ def findvideosbyserver(data, serverid):
         exec "from servers import "+serverid
         exec "devuelve.extend("+serverid+".find_videos(data))"
     except ImportError:
-        logger.info("No existe conector para #"+serverid+"#")
-        #import traceback
-        #logger.info(traceback.format_exc())
+        logger.info("No existe conector para "+serverid)
     except:
-        logger.info("Error en el conector #"+serverid+"#")
-        import traceback
-        logger.info(traceback.format_exc())
+        logger.info("Error en el conector "+serverid)
+        import traceback,sys
+        from pprint import pprint
+        exc_type, exc_value, exc_tb = sys.exc_info()
+        lines = traceback.format_exception(exc_type, exc_value, exc_tb)
+        for line in lines:
+            line_splits = line.split("\n")
+            for line_split in line_splits:
+                logger.error(line_split)
 
     return devuelve
 
 def findvideos(data):
-    logger.info("[servertools.py] findvideos") # en #"+data+"#")
+    logger.info("[servertools.py] findvideos")
     encontrados = set()
     devuelve = []
 
@@ -138,17 +141,22 @@ def findvideos(data):
             # Sustituye el código por otro "Plex compatible"
             #exec "from servers import "+serverid
             #exec "devuelve.extend("+serverid+".find_videos(data))"
+            
             servers_module = __import__("servers."+serverid)
             server_module = getattr(servers_module,serverid)
             devuelve.extend( server_module.find_videos(data) )
         except ImportError:
-            logger.info("No existe conector para #"+serverid+"#")
-            #import traceback
-            #logger.info(traceback.format_exc())
+            logger.error("No existe conector para "+serverid)
         except:
-            logger.info("Error en el conector #"+serverid+"#")
-            import traceback
-            logger.info(traceback.format_exc())
+            logger.error("Error en el conector "+serverid)
+            import traceback,sys
+            from pprint import pprint
+            exc_type, exc_value, exc_tb = sys.exc_info()
+            lines = traceback.format_exception(exc_type, exc_value, exc_tb)
+            for line in lines:
+                line_splits = line.split("\n")
+                for line_split in line_splits:
+                    logger.error(line_split)
 
     return devuelve
 
@@ -209,9 +217,8 @@ def resolve_video_urls_for_playing(server,url,video_password="",muestra_dialogo=
         try:
             # Muestra un diálogo de progreso
             if muestra_dialogo:
-                import xbmcgui
-                progreso = xbmcgui.DialogProgress()
-                progreso.create( "pelisalacarta" , "Conectando con "+server)
+                from core import guitools
+                progreso = guitools.Dialog_Progress("pelisalacarta" , "Conectando con "+server)
 
             # Sustituye el código por otro "Plex compatible"
             #exec "from servers import "+server+" as server_connector"
@@ -220,7 +227,7 @@ def resolve_video_urls_for_playing(server,url,video_password="",muestra_dialogo=
 
             logger.info("[servertools.py] servidor de "+server+" importado")
             if muestra_dialogo:
-                progreso.update( 20 , "Conectando con "+server)
+                progreso.Actualizar( 20 , "Conectando con "+server)
 
             # Si tiene una función para ver si el vídeo existe, lo comprueba ahora
             if hasattr(server_connector, 'test_video_exists'):
@@ -230,7 +237,7 @@ def resolve_video_urls_for_playing(server,url,video_password="",muestra_dialogo=
                 # Si la funcion dice que no existe, fin
                 if not puedes:
                     logger.info("[servertools.py] test_video_exists dice que el video no existe")
-                    if muestra_dialogo: progreso.close()
+                    if muestra_dialogo: progreso.Cerrar()
                     return video_urls,puedes,motivo
                 else:
                     logger.info("[servertools.py] test_video_exists dice que el video SI existe")
@@ -242,7 +249,7 @@ def resolve_video_urls_for_playing(server,url,video_password="",muestra_dialogo=
                 
                 # Si no se encuentran vídeos en modo free, es porque el vídeo no existe
                 if len(video_urls)==0:
-                    if muestra_dialogo: progreso.close()
+                    if muestra_dialogo: progreso.Cerrar()
                     return video_urls,False,"No se puede encontrar el vídeo en "+server
 
             # Obtiene enlaces premium si tienes cuenta en el server
@@ -251,7 +258,7 @@ def resolve_video_urls_for_playing(server,url,video_password="",muestra_dialogo=
                 
                 # Si no se encuentran vídeos en modo premium directo, es porque el vídeo no existe
                 if len(video_urls)==0:
-                    if muestra_dialogo: progreso.close()
+                    if muestra_dialogo: progreso.Cerrar()
                     return video_urls,False,"No se puede encontrar el vídeo en "+server
     
             # Obtiene enlaces filenium si tienes cuenta
@@ -259,7 +266,7 @@ def resolve_video_urls_for_playing(server,url,video_password="",muestra_dialogo=
     
                 # Muestra un diálogo de progreso
                 if muestra_dialogo:
-                    progreso.update( 40 , "Conectando con Filenium")
+                    progreso.Actualizar( 40 , "Conectando con Filenium")
     
                 from servers import filenium as gen_conector
                 
@@ -273,7 +280,7 @@ def resolve_video_urls_for_playing(server,url,video_password="",muestra_dialogo=
     
                 # Muestra un diálogo de progreso
                 if muestra_dialogo:
-                    progreso.update( 60 , "Conectando con Real-Debrid")
+                    progreso.Actualizar( 60 , "Conectando con Real-Debrid")
 
                 from servers import realdebrid as gen_conector
                 video_gen = gen_conector.get_video_url( page_url=url , premium=(config.get_setting("realdebridpremium")=="true") , user=config.get_setting("realdebriduser") , password=config.get_setting("realdebridpassword"), video_password=video_password )
@@ -281,7 +288,7 @@ def resolve_video_urls_for_playing(server,url,video_password="",muestra_dialogo=
                 if not "REAL-DEBRID" in video_gen:
                     video_urls.append( [ "."+video_gen.rsplit('.',1)[1]+" [realdebrid]", video_gen ] )
                 else:
-                    if muestra_dialogo: progreso.close()
+                    if muestra_dialogo: progreso.Cerrar()
                     # Si RealDebrid da error pero tienes un enlace válido, no te dice nada
                     if len(video_urls)==0:
                         return video_urls,False,video_gen
@@ -291,7 +298,7 @@ def resolve_video_urls_for_playing(server,url,video_password="",muestra_dialogo=
     
                 # Muestra un diálogo de progreso
                 if muestra_dialogo:
-                    progreso.update( 80 , "Conectando con All-Debrid")
+                    progreso.Actualizar( 80 , "Conectando con All-Debrid")
 
                 from servers import alldebrid as gen_conector
                 video_gen = gen_conector.get_video_url( page_url=url , premium=(config.get_setting("alldebridpremium")=="true") , user=config.get_setting("alldebriduser") , password=config.get_setting("alldebridpassword"), video_password=video_password )
@@ -305,10 +312,10 @@ def resolve_video_urls_for_playing(server,url,video_password="",muestra_dialogo=
 
             
             if muestra_dialogo:
-                progreso.update( 100 , "Proceso finalizado")
+                progreso.Actualizar( 100 , "Proceso finalizado")
 
             # Cierra el diálogo de progreso
-            if muestra_dialogo: progreso.close()
+            if muestra_dialogo: progreso.Cerrar()
 
             # Llegas hasta aquí y no tienes ningún enlace para ver, así que no vas a poder ver el vídeo
             if len(video_urls)==0:
@@ -328,7 +335,7 @@ def resolve_video_urls_for_playing(server,url,video_password="",muestra_dialogo=
                 return video_urls,False,"Para ver un vídeo en "+server+" necesitas<br/>una cuenta en "+listapremium
 
         except:
-            if muestra_dialogo: progreso.close()
+            if muestra_dialogo: progreso.Cerrar()
             import traceback
             from pprint import pprint
             exc_type, exc_value, exc_tb = sys.exc_info()

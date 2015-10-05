@@ -6,6 +6,21 @@
 # Adaptado por Boludiko basado en el canal seriesyonkis V9 Por Truenon y Jesus
 # v11
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = False
+__adult__ = False
+__category__ = "F"
+__changes__ = "Arreglado el buscador. Como tienen el mismo código, usa el buscador de seriesyonkis, así solo se ha de mantener uno"
+__channel__ = "peliculasyonkis_generico"
+__creationdate__ = ""
+__date__ = "02/01/2013"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Peliculasyonkis"
+__type__ = "generic"
+__version__ = 10
+
 import urlparse,urllib2,urllib,re
 
 from core import logger
@@ -13,12 +28,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "peliculasyonkis_generico"
-__category__ = "F"
-__type__ = "generic"
-__title__ = "Peliculasyonkis"
-__language__ = "ES"
 
 DEBUG = config.get_setting("debug")
 

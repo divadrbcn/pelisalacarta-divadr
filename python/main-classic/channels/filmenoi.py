@@ -4,6 +4,21 @@
 # Canal para filmenoi
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = False
+__adult__ = False
+__category__ = "F,S"
+__changes__ = ""
+__channel__ = "filmenoi"
+__creationdate__ = 20131223
+__date__ = ""
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Filme-noi.com"
+__type__ = "generic"
+__version__ = 0
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -12,13 +27,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "filmenoi"
-__category__ = "F,S"
-__type__ = "generic"
-__title__ = "Filme-noi.com"
-__language__ = "ES"
-__creationdate__ = "20131223"
 
 DEBUG = config.get_setting("debug")
 

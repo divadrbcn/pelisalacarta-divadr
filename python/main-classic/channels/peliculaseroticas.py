@@ -4,6 +4,21 @@
 # Canal para peliculaseroticas
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = True
+__category__ = "X,F"
+__changes__ = "Website changed"
+__channel__ = "peliculaseroticas"
+__creationdate__ = ""
+__date__ = "01/11/2011"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "PeliculasEroticas"
+__type__ = "xbmc"
+__version__ = 1
+
 import urlparse,urllib2,urllib,re,time
 import os, sys
 
@@ -12,13 +27,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "peliculaseroticas"
-__category__ = "F"
-__type__ = "generic"
-__title__ = "PeliculasEroticas"
-__language__ = "ES"
-__adult__ = "true"
 
 from xml.dom import minidom
 from xml.dom import EMPTY_NAMESPACE

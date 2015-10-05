@@ -4,6 +4,21 @@
 # Canal para divxatope
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "T,F,S"
+__changes__ = "Actualizado por cambios en la web"
+__channel__ = "divxatope"
+__creationdate__ = ""
+__date__ = "11/10/2014"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Divxatope"
+__type__ = "generic"
+__version__ = 4
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -12,12 +27,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "divxatope"
-__category__ = "F,S,D"
-__type__ = "generic"
-__title__ = "Mejor Torrent"
-__language__ = "ES"
 
 DEBUG = config.get_setting("debug")
 

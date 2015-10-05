@@ -4,6 +4,22 @@
 # Canal para pornhub
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = True
+__category__ = "X,F"
+__changes__ = "Primera version"
+__channel__ = "pornhub"
+__creationdate__ = ""
+__date__ = "28/01/15"
+__fanart__ = "http://i.imgur.com/PwFvoss.jpg"
+__language__ = "ES"
+__thumbnail__ = "http://s22.postimg.org/5lzcocfqp/pornhub_logo.jpg"
+__title__ = "PornHub"
+__type__ = "generic"
+__version__ = 1
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -12,13 +28,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "pornhub"
-__category__ = "F"
-__type__ = "generic"
-__title__ = "PornHub"
-__language__ = "ES"
-__fanart__="http://i.imgur.com/PwFvoss.jpg"
 
 DEBUG = config.get_setting("debug")
 

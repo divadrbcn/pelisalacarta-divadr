@@ -4,6 +4,21 @@
 # Canal para serieonline.net
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = False
+__adult__ = False
+__category__ = "F,S,D"
+__changes__ = "Arreglado por cambios en la web"
+__channel__ = "serieonline"
+__creationdate__ = ""
+__date__ = "05/06/2012"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Serieonline"
+__type__ = "generic"
+__version__ = 2
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -12,12 +27,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "serieonline"
-__category__ = "F,S,D"
-__type__ = "generic"
-__title__ = "Serieonline"
-__language__ = "ES"
 
 DEBUG = config.get_setting("debug")
 

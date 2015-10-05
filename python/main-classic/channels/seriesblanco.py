@@ -3,6 +3,21 @@
 # pelisalacarta - XBMC Plugin
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "S,VOS"
+__changes__ = "Arregalda la duplicidad online en download"
+__channel__ = "seriesblanco"
+__creationdate__ = ""
+__date__ = "13/05/2015"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Seriesblanco"
+__type__ = "generic"
+__version__ = 6
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -12,8 +27,6 @@ from core import scrapertools
 from core.item import Item
 from servers import servertools
 
-
-__channel__ = "seriesblanco"
 
 __category__ = "F"
 

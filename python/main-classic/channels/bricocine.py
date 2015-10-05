@@ -3,6 +3,21 @@
 # pelisalacarta - XBMC Plugin
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "T,F,S"
+__changes__ = "First pelisalacarta 4 release"
+__channel__ = "bricocine"
+__creationdate__ = ""
+__date__ = "28/08/2015"
+__language__ = "ES"
+__thumbnail__ = "http://s6.postimg.org/9u8m1ep8x/bricocine.jpg"
+__title__ = "Bricocine"
+__type__ = "generic"
+__version__ = 1
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -13,12 +28,6 @@ from core.item import Item
 from servers import servertools
 
 import xbmcgui
-
-__channel__ = "bricocine"
-__category__ = "F"
-__type__ = "generic"
-__title__ = "bricocine"
-__language__ = "ES"
 
 DEBUG = config.get_setting("debug")
 

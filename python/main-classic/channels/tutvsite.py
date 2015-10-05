@@ -4,6 +4,21 @@
 # Canal para buscar en tu.tv
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = False
+__adult__ = False
+__category__ = "G"
+__changes__ = "Actualizado por cambios en la web"
+__channel__ = "tutvsite"
+__creationdate__ = ""
+__date__ = "17/10/2011"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "tu.tv"
+__type__ = "generic"
+__version__ = 3
+
 import urlparse,urllib2,urllib,re
 import os
 import sys
@@ -13,12 +28,6 @@ from core import config
 from core import logger
 from core.item import Item
 from servers import servertools
-
-__channel__ = "tutvsite"
-__category__ = "G"
-__type__ = "generic"
-__title__ = "tu.tv"
-__language__ = "ES"
 
 DEBUG = config.get_setting("debug")
 

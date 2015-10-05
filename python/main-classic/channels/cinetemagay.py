@@ -4,6 +4,21 @@
 # Canal para cinetemagay.com por sdfasd
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = True
+__category__ = "X,F"
+__changes__ = "First pelisalacarta 4 release"
+__channel__ = "cinetemagay"
+__creationdate__ = ""
+__date__ = "28/08/2015"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Cinetemagay"
+__type__ = "generic"
+__version__ = 1
+
 import urlparse,urllib2,urllib,re
 import os,sys
 
@@ -14,12 +29,6 @@ from core.item import Item
 from servers import servertools
 
 #from pelisalacarta import buscador
-
-__channel__ = "cinetemagay"
-__category__ = "D"
-__type__ = "generic"
-__title__ = "cinetemagay"
-__language__ = "ES"
 
 DEBUG = config.get_setting("debug")
 

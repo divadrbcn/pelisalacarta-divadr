@@ -5,6 +5,21 @@
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
 
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "L,F"
+__changes__ = "Añadido patrón para netu, powvideo y streaminto"
+__channel__ = "peliculasaudiolatino"
+__creationdate__ = 20111014
+__date__ = "10/11/2014"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Peliculasaudiolatino"
+__type__ = "generic"
+__version__ = 7
+
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -13,13 +28,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "peliculasaudiolatino"
-__category__ = "F"
-__type__ = "generic"
-__title__ = "Peliculasaudiolatino"
-__language__ = "ES"
-__creationdate__ = "20111014"
 
 DEBUG = config.get_setting("debug")
     

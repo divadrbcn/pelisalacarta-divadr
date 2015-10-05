@@ -4,6 +4,21 @@
 # Canal para vertelenovelas
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "S"
+__changes__ = ""
+__channel__ = "vertelenovelas"
+__creationdate__ = 20121015
+__date__ = ""
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Ver Telenovelas"
+__type__ = "generic"
+__version__ = 0
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -12,13 +27,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "vertelenovelas"
-__category__ = "S"
-__type__ = "generic"
-__title__ = "Ver Telenovelas"
-__language__ = "ES"
-__creationdate__ = "20121015"
 
 DEBUG = config.get_setting("debug")
 

@@ -4,6 +4,21 @@
 # Canal para cinemax_rs
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "F"
+__changes__ = "First pelisalacarta 4 release"
+__channel__ = "cinemax_rs"
+__creationdate__ = 20131223
+__date__ = "28/08/2015"
+__language__ = "RU"
+__thumbnail__ = ""
+__title__ = "Cinemaxx (RO)"
+__type__ = "generic"
+__version__ = 1
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -12,13 +27,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "cinemax_rs"
-__category__ = "F,S"
-__type__ = "generic"
-__title__ = "Filme-noi.com"
-__language__ = "ES"
-__creationdate__ = "20131223"
 
 DEBUG = config.get_setting("debug")
 

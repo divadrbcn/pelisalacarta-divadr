@@ -4,6 +4,21 @@
 # Canal para bityouth
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "F,S"
+__changes__ = ""
+__channel__ = "bityouth"
+__creationdate__ = ""
+__date__ = ""
+__language__ = "ES"
+__thumbnail__ = "http://s6.postimg.org/6ash180up/bityoulogo.png"
+__title__ = "Bityouth"
+__type__ = "generic"
+__version__ = 0
+
 import urlparse,urllib2,urllib,re
 import os,sys
 
@@ -17,12 +32,6 @@ try:
     import xbmc
     import xbmcgui
 except: pass
-__channel__ = "bityouth"
-__category__ = "F,S,A"
-__type__ = "generic"
-__title__ = "Bityouth"
-__language__ = "ES"
-
 
 
 DEBUG = config.get_setting("debug")

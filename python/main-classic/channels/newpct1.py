@@ -5,6 +5,21 @@
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
 
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "F,S,A"
+__changes__ = "Corregir bug en Series"
+__channel__ = "newpct1"
+__creationdate__ = 20141102
+__date__ = "30/09/15"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Newpct1"
+__type__ = "generic"
+__version__ = 11
+
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -15,15 +30,6 @@ from core.item import Item
 from servers import servertools
 
 DEBUG = config.get_setting("debug")
-
-__category__ = "A"
-__type__ = "generic"
-__title__ = "Newpct1"
-__channel__ = "newpct1"
-__adult__ = "false"
-__thumbnail__ = "http://s3.postimg.org/c7oceldcz/logof.jpg"
-__language__ = "ES"
-__creationdate__ = "20141102"
 
 def isGeneric():
     return True

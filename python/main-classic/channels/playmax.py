@@ -4,6 +4,21 @@
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
 
+#Propiedades del Canal:
+__active__ = False
+__adult__ = False
+__category__ = "F"
+__changes__ = ""
+__channel__ = "playmax"
+__creationdate__ = 20141217
+__date__ = ""
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "PlayMax"
+__type__ = "generic"
+__version__ = 0
+
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -15,13 +30,6 @@ from core.item import Item
 from servers import servertools
 
 DEBUG = config.get_setting("debug")
-
-__category__ = "F"
-__type__ = "generic"
-__title__ = "PlayMax"
-__channel__ = "playmax"
-__language__ = "ES"
-__creationdate__ = "20141217"
 
 host = "http://playmax.es/"
 

@@ -4,6 +4,21 @@
 # Canal para pelis24
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "L,F,VOS"
+__changes__ = "Arreglado pelis24"
+__channel__ = "pelis24"
+__creationdate__ = ""
+__date__ = "26/04/2015"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Pelis24"
+__type__ = "generic"
+__version__ = 6
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -11,12 +26,6 @@ from core import logger
 from core import config
 from core import scrapertools
 from core.item import Item
-
-__channel__ = "pelis24"
-__category__ = "F,S"
-__type__ = "generic"
-__title__ = "Pelis24"
-__language__ = "ES"
 
 DEBUG = config.get_setting("debug")
 

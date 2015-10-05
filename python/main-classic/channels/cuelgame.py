@@ -3,6 +3,21 @@
 # pelisalacarta - XBMC Plugin
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "T,F,A,D,VOS"
+__changes__ = ""
+__channel__ = "cuelgame"
+__creationdate__ = ""
+__date__ = ""
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Cuelgame"
+__type__ = "generic"
+__version__ = 0
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -11,12 +26,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "cuelgame"
-__category__ = "F"
-__type__ = "generic"
-__title__ = "Cuélgame"
-__language__ = "ES"
 
 DEBUG = config.get_setting("debug")
 

@@ -4,6 +4,21 @@
 # Canal para novedades
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = False
+__adult__ = False
+__category__ = "F"
+__changes__ = ""
+__channel__ = "novedades"
+__creationdate__ = ""
+__date__ = ""
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Novedades"
+__type__ = "generic"
+__version__ = 0
+
 import urlparse,urllib2,urllib,re
 
 from core import logger
@@ -27,11 +42,11 @@ def mainlist(item,preferred_thumbnail="squares"):
     logger.info("pelisalacarta.channels.novedades mainlist")
 
     itemlist = []
-    itemlist.append( Item(channel=__channel__, action="peliculas"            , title="Películas", thumbnail="http://media.tvalacarta.info/pelisalacarta/"+preferred_thumbnail+"/thumb_canales_peliculas.png",viewmode="movie"))
-    itemlist.append( Item(channel=__channel__, action="peliculas_infantiles" , title="Para niños", thumbnail="http://media.tvalacarta.info/pelisalacarta/"+preferred_thumbnail+"/thumb_canales_infantiles.png",viewmode="movie"))
-    itemlist.append( Item(channel=__channel__, action="series"               , title="Episodios de series", thumbnail="http://media.tvalacarta.info/pelisalacarta/"+preferred_thumbnail+"/thumb_canales_series.png",viewmode="movie"))
-    itemlist.append( Item(channel=__channel__, action="anime"                , title="Episodios de anime", thumbnail="http://media.tvalacarta.info/pelisalacarta/"+preferred_thumbnail+"/thumb_canales_anime.png",viewmode="movie"))
-    itemlist.append( Item(channel=__channel__, action="documentales"         , title="Documentales", thumbnail="http://media.tvalacarta.info/pelisalacarta/"+preferred_thumbnail+"/thumb_canales_documentales.png",viewmode="movie"))
+    itemlist.append( Item(channel=__channel__, action="peliculas"            , title="Películas", thumbnail="%sthumb_canales_peliculas.png"))
+    itemlist.append( Item(channel=__channel__, action="peliculas_infantiles" , title="Para niños", thumbnail="%sthumb_canales_infantiles.png"))
+    itemlist.append( Item(channel=__channel__, action="series"               , title="Episodios de series", thumbnail="%sthumb_canales_series.png"))
+    itemlist.append( Item(channel=__channel__, action="anime"                , title="Episodios de anime", thumbnail="%sthumb_canales_anime.png"))
+    itemlist.append( Item(channel=__channel__, action="documentales"         , title="Documentales", thumbnail="%sthumb_canales_documentales.png"))
 
     return itemlist
 

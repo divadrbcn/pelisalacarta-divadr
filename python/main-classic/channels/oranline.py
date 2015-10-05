@@ -4,6 +4,21 @@
 # Canal para oranline
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "L,F,D"
+__changes__ = "Actualizado"
+__channel__ = "oranline"
+__creationdate__ = ""
+__date__ = "23/08/2013"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Oranline"
+__type__ = "generic"
+__version__ = 2
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -12,12 +27,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "oranline"
-__category__ = "F"
-__type__ = "generic"
-__title__ = "oranline"
-__language__ = "ES"
 
 DEBUG = config.get_setting("debug")
 

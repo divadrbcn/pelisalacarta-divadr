@@ -4,6 +4,21 @@
 # Canal para hdfull
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "F,S"
+__changes__ = ""
+__channel__ = "hdfull"
+__creationdate__ = ""
+__date__ = ""
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "HDFull"
+__type__ = "generic"
+__version__ = 0
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -12,12 +27,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "hdfull"
-__category__ = "F,S,D"
-__type__ = "generic"
-__title__ = "HDFull"
-__language__ = "ES"
 
 DEBUG = config.get_setting("debug")
 

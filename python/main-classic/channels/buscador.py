@@ -3,6 +3,21 @@
 # pelisalacarta - XBMC Plugin
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = False
+__adult__ = False
+__category__ = "F"
+__changes__ = "Arregla el fallo por canales inválidos. Muestra progreso e incluye el nombre del canal en el resultado (gracias a Raúl)"
+__channel__ = "buscador"
+__creationdate__ = ""
+__date__ = "28/08/2015"
+__language__ = "es"
+__thumbnail__ = ""
+__title__ = "Buscador"
+__type__ = "generic"
+__version__ = 1
+
 import urlparse,urllib2,urllib,re
 import sys
 
@@ -13,10 +28,6 @@ import channelselector
 
 
 DEBUG = config.get_setting("debug")
-
-__type__ = "generic"
-__title__ = "Buscador"
-__channel__ = "buscador"
 
 Threads={}
 

@@ -4,6 +4,21 @@
 # Canal para http://www.veranime.net/
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = False
+__adult__ = False
+__category__ = "A"
+__changes__ = "Canal veranime actualizado por cambios en la web"
+__channel__ = "veranime"
+__creationdate__ = ""
+__date__ = "10/07/2012"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Ver-anime"
+__type__ = "generic"
+__version__ = 3
+
 import urlparse,urllib2,urllib,re
 import os
 import sys
@@ -13,12 +28,6 @@ from core import config
 from core import logger
 from core.item import Item
 from servers import servertools
-
-__channel__ = "veranime"
-__category__ = "A"
-__type__ = "generic"
-__title__ = "Ver-anime"
-__language__ = "ES"
 
 DEBUG = config.get_setting("debug")
 

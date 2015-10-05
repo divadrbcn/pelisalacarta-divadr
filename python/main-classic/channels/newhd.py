@@ -5,6 +5,21 @@
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
 
+#Propiedades del Canal:
+__active__ = False
+__adult__ = False
+__category__ = "F"
+__changes__ = "Añadidos el resto de idiomas por bandavi"
+__channel__ = "newhd"
+__creationdate__ = 20110505
+__date__ = "02/02/2012"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "NewHD"
+__type__ = "generic"
+__version__ = 3
+
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -13,13 +28,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "newhd"
-__category__ = "F"
-__type__ = "generic"
-__title__ = "NewHD"
-__language__ = "ES"
-__creationdate__ = "20110505"
 
 
 DEBUG = config.get_setting("debug")

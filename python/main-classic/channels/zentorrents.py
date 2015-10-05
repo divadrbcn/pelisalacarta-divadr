@@ -4,6 +4,21 @@
 # Canal para zentorrents
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "T,F,S"
+__changes__ = "zentorrents: Córrección cambios web"
+__channel__ = "zentorrents"
+__creationdate__ = ""
+__date__ = "21/09/2015"
+__language__ = "ES"
+__thumbnail__ = "http://s6.postimg.org/9zv90yjip/zentorrentlogo.jpg"
+__title__ = "Zentorrents"
+__type__ = "xbmc"
+__version__ = 8
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -16,12 +31,6 @@ try:
     import xbmc
     import xbmcgui
 except: pass
-
-__channel__ = "zentorrents"
-__category__ = "F"
-__type__ = "generic"
-__title__ = "Zentorrents"
-__language__ = "ES"
 
 DEBUG = config.get_setting("debug")
 host = "http://www.zentorrents.com/"

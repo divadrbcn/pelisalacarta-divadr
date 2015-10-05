@@ -4,6 +4,21 @@
 # Canal para elitetorrent
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "T,F,S,D"
+__changes__ = ""
+__channel__ = "elitetorrent"
+__creationdate__ = ""
+__date__ = ""
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Elite Torrent"
+__type__ = "xbmc"
+__version__ = 0
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -12,12 +27,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "elitetorrent"
-__category__ = "F,S,D"
-__type__ = "generic"
-__title__ = "Elite Torrent"
-__language__ = "ES"
 
 DEBUG = config.get_setting("debug")
 BASE_URL = 'http://www.elitetorrent.net'

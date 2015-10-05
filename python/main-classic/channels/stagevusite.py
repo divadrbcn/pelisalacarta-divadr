@@ -4,6 +4,21 @@
 # Canal para buscar en stagevu
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = False
+__adult__ = False
+__category__ = "G"
+__changes__ = ""
+__channel__ = "stagevusite"
+__creationdate__ = ""
+__date__ = ""
+__language__ = " "
+__thumbnail__ = ""
+__title__ = "Stagevu"
+__type__ = "xbmc"
+__version__ = 0
+
 import urlparse,urllib2,urllib,re
 import os
 import sys
@@ -20,12 +35,6 @@ from servers import servertools
 from servers import vk
 
 from pelisalacarta import buscador
-
-__channel__ = "stagevusite"
-__category__ = "G"
-__type__ = "xbmc"
-__title__ = "Stagevu"
-__language__ = ""
 
 DEBUG = config.get_setting("debug")
 

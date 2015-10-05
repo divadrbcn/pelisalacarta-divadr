@@ -5,6 +5,21 @@
 # Actualización Carles Carmona 15/08/2011
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "D"
+__changes__ = ""
+__channel__ = "teledocumentales"
+__creationdate__ = 20111019
+__date__ = ""
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Teledocumentales"
+__type__ = "generic"
+__version__ = 0
+
 import urlparse,urllib2,urllib,re
 import os
 import sys
@@ -14,13 +29,6 @@ from core import config
 from core import logger
 from core.item import Item
 from servers import servertools
-
-__channel__ = "teledocumentales"
-__category__ = "D"
-__type__ = "generic"
-__title__ = "Teledocumentales"
-__language__ = "ES"
-__creationdate__ = "20111019"
 
 
 DEBUG = config.get_setting("debug")

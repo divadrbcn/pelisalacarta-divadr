@@ -4,6 +4,21 @@
 # Canal para peliculasonlineflv
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = False
+__adult__ = False
+__category__ = "F,D"
+__changes__ = "Test"
+__channel__ = "peliculasonlineflv"
+__creationdate__ = ""
+__date__ = "27/06/2011"
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Peliculas Online FLV"
+__type__ = "generic"
+__version__ = 4
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -12,12 +27,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "peliculasonlineflv"
-__category__ = "F,D"
-__type__ = "generic"
-__title__ = "Peliculas Online FLV"
-__language__ = "ES"
 
 DEBUG = config.get_setting("debug")
 

@@ -4,6 +4,21 @@
 # Canal para tusnovelas.com
 # http://blog.tvalacarta.info/plugin-xbmc/pelisalacarta/
 #------------------------------------------------------------
+
+#Propiedades del Canal:
+__active__ = True
+__adult__ = False
+__category__ = "S"
+__changes__ = ""
+__channel__ = "tusnovelas"
+__creationdate__ = 20120703
+__date__ = ""
+__language__ = "ES"
+__thumbnail__ = ""
+__title__ = "Tus Novelas"
+__type__ = "generic"
+__version__ = 0
+
 import urlparse,urllib2,urllib,re
 import os, sys
 
@@ -12,13 +27,6 @@ from core import config
 from core import scrapertools
 from core.item import Item
 from servers import servertools
-
-__channel__ = "tusnovelas"
-__category__ = "S"
-__type__ = "generic"
-__title__ = "Tus novelas"
-__language__ = "ES"
-__creationdate__ = "20120703"
 
 DEBUG = config.get_setting("debug")
 
