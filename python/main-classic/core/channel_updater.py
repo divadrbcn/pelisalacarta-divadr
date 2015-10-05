@@ -14,7 +14,8 @@ import json
 
 DEBUG = config.get_setting("debug")
 headers = [["User-Agent", "pelisalacarta"]] 
-GitApi = "https://api.github.com/repos/tvalacarta/pelisalacarta/contents/python/main-classic/"
+repo = "divadres/pelisalacarta-divadr"
+GitApi = "https://api.github.com/repos/"+repo+"/contents/python/main-classic/"
 
 
 ### Procedures
@@ -35,7 +36,7 @@ def Check():
   progress.Actualizar(25, "Descargando lista de Servidores...")
   RemoteJSONData = json.loads(scrapertools.cache_page(GitApi + "servers", headers=headers))
   LocalJSONData = json.loads(open(ServersIndexPath,"r").read())
-
+  #open(ServersIndexPath.replace(".json","-remote.json"),"w").write(json.dumps(LocalJSONData, indent=4, sort_keys=True))
   if RemoteJSONData <> LocalJSONData:
     for Server in RemoteJSONData:
       if not Server in LocalJSONData:
@@ -45,7 +46,7 @@ def Check():
   progress.Actualizar(50, "Descargando lista de Canales...")
   RemoteJSONData = json.loads(scrapertools.cache_page(GitApi + "channels", headers=headers))
   LocalJSONData = json.loads(open(ChannelsIndexPath,"r").read())
-
+  #open(ChannelsIndexPath.replace(".json","-remote.json"),"w").write(json.dumps(LocalJSONData, indent=4, sort_keys=True))
   progress.Actualizar(75, "Comprobando...")
   if RemoteJSONData <> LocalJSONData:
     for Channel in RemoteJSONData:
@@ -81,16 +82,18 @@ def CreateIndex(IndexPath, Folder):
       File = os.path.join(config.get_runtime_path(), Folder,File)
       if not File.endswith(".pyc"):
           FileData = open(File, 'rb').read()
+          FileData =  FileData.replace("\r\n", "\n")
+          FileData =  FileData.replace("\r", "\n")
           JSONFile={}
           JSONFile["name"] = os.path.basename(File)
           JSONFile["size"] = len(FileData)
           JSONFile["path"] = "python/main-classic/"+Folder + "/" + JSONFile["name"]
-          JSONFile["url"] = "https://api.github.com/repos/tvalacarta/pelisalacarta/contents/" + JSONFile["path"] + "?ref=master"
+          JSONFile["url"] = "https://api.github.com/repos/"+repo+"/contents/" + JSONFile["path"] + "?ref=master"
           JSONFile["type"] = "file"
           JSONFile["sha"] =  hashlib.sha1("blob " + str(JSONFile["size"]) + "\0" + FileData).hexdigest()
-          JSONFile["download_url"] = "https://raw.githubusercontent.com/tvalacarta/pelisalacarta/master/" + JSONFile["path"] 
-          JSONFile["git_url"] = "https://api.github.com/repos/tvalacarta/pelisalacarta/git/blobs/" + JSONFile["sha"]
-          JSONFile["html_url"] = "https://github.com/tvalacarta/pelisalacarta/blob/master/"+ JSONFile["path"]
+          JSONFile["download_url"] = "https://raw.githubusercontent.com/"+repo+"/master/" + JSONFile["path"] 
+          JSONFile["git_url"] = "https://api.github.com/repos/"+repo+"/git/blobs/" + JSONFile["sha"]
+          JSONFile["html_url"] = "https://github.com/"+repo+"/blob/master/"+ JSONFile["path"]
           JSONFile["_links"]={}
           JSONFile["_links"]["git"] = JSONFile["git_url"]
           JSONFile["_links"]["html"] = JSONFile["html_url"]
