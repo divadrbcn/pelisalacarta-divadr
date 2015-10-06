@@ -78,9 +78,9 @@ def listchannels(item):
           except:
             continue
           
-          #Crea las propiedades por defecto en cso de que no existan
+          #Crea las propiedades por defecto en caso de que no existan
           if not hasattr(channelmodule,"__channel__"): channelmodule.__channel__ = channel.replace(".py","")
-          if not hasattr(channelmodule,"__disabled__"): channelmodule.__disabled__ = False
+          if not hasattr(channelmodule,"__active__"): channelmodule.__active__ = True
           if not hasattr(channelmodule,"__adult__"): channelmodule.__adult__ = False
           if not hasattr(channelmodule,"__title__"): channelmodule.__title__ = channelmodule.__channel__
           if not hasattr(channelmodule,"__language__"): channelmodule.__language__ = ""
@@ -91,7 +91,7 @@ def listchannels(item):
           
 
           
-          if channelmodule.__disabled__:  continue
+          if not channelmodule.__active__:  continue
           if channelmodule.__adult__ and not config.get_setting("enableadultmode") == "true": continue
           if not item.category=="*" and not item.category in channelmodule.__category__: continue
           if not channelmodule.__language__=="" and not idiomav=="" and not idiomav in channelmodule.__language__: continue
@@ -117,7 +117,6 @@ def listchannels(item):
 
     for channel in channelslist:
         if channel.thumbnail == "": channel.thumbnail = "%s"+channel.channel+".png"
-        channel.plot = channel.category.replace("VOS","Versión original subtitulada").replace("F","Películas").replace("S","Series").replace("D","Documentales").replace("A","Anime").replace(",",", ")
         itemlist.append(channel)
 
     return itemlist
